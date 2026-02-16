@@ -1,0 +1,1361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+       <!-- SpreadT Company  -->
+        <record id="base.main_partner" model="res.partner" context="{'default_is_company': True}">
+            <field name="name">Spreadt General Trading LLC.</field>
+            <field name="image" type="base64" file="spreadt_base_data/static/description/res_company_logo.png"/>
+        </record>
+
+        <!-- SpreadT Company  -->
+        <record id="base.main_company" model="res.company">
+            <field name="name">Spreadt General Trading LLC.</field>
+            <field name="currency_id" ref="base.AED"/>
+            <field name="logo" type="base64" file="spreadt_base_data/static/description/res_company_logo.png"/>
+        </record>
+
+        <record id="stock.warehouse0" model="stock.warehouse">
+            <field name="code">SGTL</field>
+        </record>
+
+        <record id="product_category_original_sprout" model="product.category">
+            <field name="name">Original Sprout</field>
+        </record>
+        <record id="product_category_shampoo" model="product.category">
+            <field name="parent_id" ref="product_category_original_sprout"/>
+            <field name="name">Shampoo</field>
+        </record>
+        <record id="product_category_conditioner" model="product.category">
+            <field name="parent_id" ref="product_category_original_sprout"/>
+            <field name="name">Conditioners</field>
+        </record>
+        <record id="product_category_styling_products" model="product.category">
+            <field name="parent_id" ref="product_category_original_sprout"/>
+            <field name="name">Styling Products</field>
+        </record>
+        <record id="product_category_body" model="product.category">
+            <field name="parent_id" ref="product_category_original_sprout"/>
+            <field name="name">Body</field>
+        </record>
+        <record id="product_category_kits" model="product.category">
+            <field name="parent_id" ref="product_category_original_sprout"/>
+            <field name="name">Kits</field>
+        </record>
+
+        <record id="product_category_yubo" model="product.category">
+            <field name="name">Yubo</field>
+        </record>
+        <record id="product_category_lunch_box" model="product.category">
+            <field name="parent_id" ref="product_category_yubo"/>
+            <field name="name">Lunch Box</field>
+        </record>
+        <record id="product_category_face_plates" model="product.category">
+            <field name="parent_id" ref="product_category_yubo"/>
+            <field name="name">Face Plates</field>
+        </record>
+        <record id="product_category_totes" model="product.category">
+            <field name="parent_id" ref="product_category_yubo"/>
+            <field name="name">Totes</field>
+        </record>
+        <record id="product_category_drink_holder" model="product.category">
+            <field name="parent_id" ref="product_category_yubo"/>
+            <field name="name">Drink Holder</field>
+        </record>
+        <record id="product_category_containers" model="product.category">
+            <field name="parent_id" ref="product_category_yubo"/>
+            <field name="name">Containers</field>
+        </record>
+
+        <record id="product_category_orbit_baby" model="product.category">
+            <field name="name">Orbit Baby</field>
+        </record>
+        <record id="product_category_orbit_strollers" model="product.category">
+            <field name="parent_id" ref="product_category_orbit_baby"/>
+            <field name="name">Strollers</field>
+        </record>
+        <record id="product_category_bassinets" model="product.category">
+            <field name="parent_id" ref="product_category_orbit_baby"/>
+            <field name="name">Bassinets</field>
+        </record>
+        <record id="product_category_car_seats" model="product.category">
+            <field name="parent_id" ref="product_category_orbit_baby"/>
+            <field name="name">Car Seats</field>
+        </record>
+        <record id="product_category_accessories" model="product.category">
+            <field name="parent_id" ref="product_category_orbit_baby"/>
+            <field name="name">Accessories</field>
+        </record>
+
+        <record id="product_category_miniu" model="product.category">
+            <field name="name">Mini U</field>
+        </record>
+        <record id="product_category_miniu_shampoo" model="product.category">
+            <field name="parent_id" ref="product_category_miniu"/>
+            <field name="name">Shampoo</field>
+        </record>
+        <record id="product_category_miniu_conditioners" model="product.category">
+            <field name="parent_id" ref="product_category_miniu"/>
+            <field name="name">Conditioners</field>
+        </record>
+        <record id="product_category_miniu_styling_products" model="product.category">
+            <field name="parent_id" ref="product_category_miniu"/>
+            <field name="name">Styling Products</field>
+        </record>
+        <record id="product_category_miniu_body" model="product.category">
+            <field name="parent_id" ref="product_category_miniu"/>
+            <field name="name">Body</field>
+        </record>
+        <record id="product_category_miniu_bath" model="product.category">
+            <field name="parent_id" ref="product_category_miniu"/>
+            <field name="name">Bath</field>
+        </record>
+        <record id="product_category_miniu_kits" model="product.category">
+            <field name="parent_id" ref="product_category_miniu"/>
+            <field name="name">Kits</field>
+        </record>
+        <record id="product_category_miniu_accessories" model="product.category">
+            <field name="parent_id" ref="product_category_miniu"/>
+            <field name="name">Accessories</field>
+        </record>
+
+        <record id="product_category_caboo" model="product.category">
+            <field name="name">Caboo</field>
+        </record>
+        <record id="product_category_caboo_paper_products" model="product.category">
+            <field name="parent_id" ref="product_category_caboo"/>
+            <field name="name">Paper Products</field>
+        </record>
+        <record id="product_category_caboo_wipes" model="product.category">
+            <field name="parent_id" ref="product_category_caboo"/>
+            <field name="name">Wipes</field>
+        </record>
+
+        <record id="product_category_miss_nella" model="product.category">
+            <field name="name">Miss Nella</field>
+        </record>
+        <record id="product_category_miss_nella_nail_polish" model="product.category">
+            <field name="parent_id" ref="product_category_miss_nella"/>
+            <field name="name">Nail Polish</field>
+        </record>
+
+        <record id="product_category_barefoot_dreams" model="product.category">
+            <field name="name">Barefoot Dreams</field>
+        </record>
+        <record id="product_category_barefoot_dreams_bankets" model="product.category">
+            <field name="parent_id" ref="product_category_barefoot_dreams"/>
+            <field name="name">Blankets</field>
+        </record>
+        <record id="product_category_barefoot_dreams_throws" model="product.category">
+            <field name="parent_id" ref="product_category_barefoot_dreams"/>
+            <field name="name">Throws</field>
+        </record>
+        <record id="product_category_barefoot_dreams_buddies" model="product.category">
+            <field name="parent_id" ref="product_category_barefoot_dreams"/>
+            <field name="name">Buddies</field>
+        </record>
+        <record id="product_category_barefoot_dreams_robes" model="product.category">
+            <field name="parent_id" ref="product_category_barefoot_dreams"/>
+            <field name="name">Robes</field>
+        </record>
+        <record id="product_category_barefoot_dreams_apparel" model="product.category">
+            <field name="parent_id" ref="product_category_barefoot_dreams"/>
+            <field name="name">Apparel</field>
+        </record>
+        <record id="product_category_barefoot_dreams_gift_packs" model="product.category">
+            <field name="parent_id" ref="product_category_barefoot_dreams"/>
+            <field name="name">Gift Packs</field>
+        </record>
+        <record id="product_category_barefoot_dreams_accessories" model="product.category">
+            <field name="parent_id" ref="product_category_barefoot_dreams"/>
+            <field name="name">Accessories</field>
+        </record>
+
+        <record id="product_category_nosefrida" model="product.category">
+            <field name="name">NoseFrida</field>
+        </record>
+        <record id="product_category_nosefrida_asptrators" model="product.category">
+            <field name="parent_id" ref="product_category_nosefrida"/>
+            <field name="name">Asptrators</field>
+        </record>
+        <record id="product_category_nosefrida_hygiene_filters" model="product.category">
+            <field name="parent_id" ref="product_category_nosefrida"/>
+            <field name="name">Hygiene Filters</field>
+        </record>
+
+        <record id="product_category_windi" model="product.category">
+            <field name="name">Windi</field>
+        </record>
+        <record id="product_category_windi_gas_passer" model="product.category">
+            <field name="parent_id" ref="product_category_windi"/>
+            <field name="name">Gas Passer</field>
+        </record>
+
+        <record id="product_category_daradam" model="product.category">
+            <field name="name">Daradam</field>
+        </record>
+        <record id="product_category_daradam_arabicubes" model="product.category">
+            <field name="parent_id" ref="product_category_daradam"/>
+            <field name="name">Arabicubes</field>
+        </record>
+        <record id="product_category_daradam_playcards" model="product.category">
+            <field name="parent_id" ref="product_category_daradam"/>
+            <field name="name">Play Cards</field>
+        </record>
+        
+        <record id="product_category_baby_kingdom" model="product.category">
+            <field name="name">Baby Kingdom</field>
+        </record>
+        <record id="product_category_baby_kingdom_shampoo" model="product.category">
+            <field name="parent_id" ref="product_category_baby_kingdom"/>
+            <field name="name">Shampoo</field>
+        </record>
+        <record id="product_category_baby_kingdom_2in1" model="product.category">
+            <field name="parent_id" ref="product_category_baby_kingdom"/>
+            <field name="name">2 in 1</field>
+        </record>
+        <record id="product_category_baby_kingdom_nappy_cream" model="product.category">
+            <field name="parent_id" ref="product_category_baby_kingdom"/>
+            <field name="name">Nappy Cream</field>
+        </record>
+        <record id="product_category_baby_kingdom_body_cream" model="product.category">
+            <field name="parent_id" ref="product_category_baby_kingdom"/>
+            <field name="name">Body Cream</field>
+        </record>
+        <record id="product_category_baby_kingdom_powder" model="product.category">
+            <field name="parent_id" ref="product_category_baby_kingdom"/>
+            <field name="name">Powder</field>
+        </record>
+        <!--UOM related data-->
+        <record id="product_uom_4_oz" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_vol"/>
+            <field name="name">4 oz</field>
+            <field name="factor" eval="135.256"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_2_oz" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_vol"/>
+            <field name="name">2 oz</field>
+            <field name="factor" eval="67.628"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_8_oz" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_vol"/>
+            <field name="name">8 oz</field>
+            <field name="factor" eval="270.512"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_0_5_oz" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_vol"/>
+            <field name="name">0.5 oz</field>
+            <field name="factor" eval="16.907"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_12_oz" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_vol"/>
+            <field name="name">12 oz</field>
+            <field name="factor" eval="405.768"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_3_oz" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_vol"/>
+            <field name="name">3 oz</field>
+            <field name="factor" eval="101.442"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_2_267_oz" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_vol"/>
+            <field name="name">2.267 oz</field>
+            <field name="factor" eval="76.656338"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_1_25_oz" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_vol"/>
+            <field name="name">1.25 oz</field>
+            <field name="factor" eval="42.2675"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_33_oz" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_vol"/>
+            <field name="name">33 oz</field>
+            <field name="factor" eval="1115.862"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_250_ml" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_vol"/>
+            <field name="name">250 ml</field>
+            <field name="factor" eval="250"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_500_ml" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_vol"/>
+            <field name="name">500 ml</field>
+            <field name="factor" eval="500"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_100_ml" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_vol"/>
+            <field name="name">100 ml</field>
+            <field name="factor" eval="100"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_1000_ml" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_vol"/>
+            <field name="name">1000 ml</field>
+            <field name="factor" eval="1000"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <!--UOM KG and G-->
+        <record id="product_uom_0_566_kg" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">0.566 kg</field>
+            <field name="factor" eval="566"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_1_247_kg" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">1.247 kg</field>
+            <field name="factor" eval="1.247"/>
+            <field name="uom_type">bigger</field>
+        </record>
+        <record id="product_uom_0_302_kg" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">302 kg</field>
+            <field name="factor" eval="302"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_0_151_kg" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">151 kg</field>
+            <field name="factor" eval="151"/>
+            <field name="uom_type">smaller</field>
+        </record>
+
+        <record id="product_uom_0_181_kg" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">0.181 kg</field>
+            <field name="factor" eval="0.181"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_1_209_kg" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">1.209 kg</field>
+            <field name="factor" eval="1.209"/>
+            <field name="uom_type">bigger</field>
+        </record>
+        <record id="product_uom_0_476_kg" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">0.476 kg</field>
+            <field name="factor" eval="0.476"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_0_481_kg" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">0.481 kg</field>
+            <field name="factor" eval="0.481"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_0_214_kg" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">0.214 kg</field>
+            <field name="factor" eval="0.214"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_1_436_kg" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">1.436 kg</field>
+            <field name="factor" eval="1.436"/>
+            <field name="uom_type">bigger</field>
+        </record>
+        <record id="product_uom_0_094_kg" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">0.094 kg</field>
+            <field name="factor" eval="0.094"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_2_267_kg" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">2.267 kg</field>
+            <field name="factor" eval="2.267"/>
+            <field name="uom_type">bigger</field>
+        </record>
+        <record id="product_uom_1_5_kg" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">1.5 kg</field>
+            <field name="factor" eval="1.5"/>
+            <field name="uom_type">bigger</field>
+        </record>
+
+        <record id="product_uom_4_gm" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">4 gm</field>
+            <field name="factor" eval="4"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_250_gm" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">250 gm</field>
+            <field name="factor" eval="250"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_500_gm" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">500 gm</field>
+            <field name="factor" eval="500"/>
+            <field name="uom_type">smaller</field>
+        </record>
+        <record id="product_uom_50_gm" model="uom.uom">
+            <field name="category_id" ref="uom.product_uom_categ_kgm"/>
+            <field name="name">50 gm</field>
+            <field name="factor" eval="50"/>
+            <field name="uom_type">smaller</field>
+        </record>
+
+        <record id="account_payment_term_30days_credit" model="account.payment.term">
+            <field name="name">30 Days Credit</field>
+            <field name="note">Payment terms: 30 Days</field>
+            <field name="line_ids" eval="[(5, 0), (0, 0, {'value': 'balance', 'value_amount': 0.0, 'sequence': 500, 'days': 45, 'option': 'day_after_invoice_date'})]"/>
+        </record>
+
+        <!--<record id="account_payment_term_45days" model="account.payment.term">-->
+            <!--<field name="name">45 Days</field>-->
+            <!--<field name="note">Payment terms: 45 Days</field>-->
+            <!--<field name="line_ids" eval="[(5, 0), (0, 0, {'value': 'balance', 'value_amount': 0.0, 'sequence': 500, 'days': 45, 'option': 'day_after_invoice_date'})]"/>-->
+        <!--</record>-->
+
+        <record id="account_payment_term_60days" model="account.payment.term">
+            <field name="name">60 Days</field>
+            <field name="note">Payment terms: 60 Days</field>
+            <field name="line_ids" eval="[(5, 0), (0, 0, {'value': 'balance', 'value_amount': 0.0, 'sequence': 500, 'days': 60, 'option': 'day_after_invoice_date'})]"/>
+        </record>
+
+         <record id="account_payment_term_90days" model="account.payment.term">
+            <field name="name">90 Days</field>
+            <field name="note">Payment terms: 90 Days</field>
+            <field name="line_ids" eval="[(5, 0), (0, 0, {'value': 'balance', 'value_amount': 0.0, 'sequence': 500, 'days': 90, 'option': 'day_after_invoice_date'})]"/>
+        </record>
+
+        <record id="account_payment_on_delivery" model="account.payment.term">
+            <field name="name">Payment On Delivery</field>
+            <field name="note">Payment terms: On Delivery</field>
+        </record>
+
+        <record id="account_payment_consigment" model="account.payment.term">
+            <field name="name">Consignment</field>
+            <field name="note">Payment terms: Consignment</field>
+        </record>
+
+        <record id="account_payment_term_full_advance"
+                model="account.payment.term">
+            <field name="name">Full Payment in Advance</field>
+            <field name="note">Full Payment in Advance</field>
+            <field name="line_ids"
+                   eval="[(5, 0), (0, 0, {'value': 'balance', 'value_amount': 0.0, 'sequence': 501, 'days': 0, 'option': 'day_after_invoice_date'})]"/>
+            <field name="active">True</field>
+        </record>
+
+
+        <record id="stock_location_cst_llc" model="stock.location">
+            <field name="name">Caramel &amp; Sun Trading L.L.C</field>
+            <field name="posx">0</field>
+            <field name="location_id" model="stock.location"
+                eval="obj().env.ref('stock.warehouse0').lot_stock_id.id"/>
+        </record>
+        <!--<record id="picking_type_int_cstllc" model="stock.picking.type">-->
+            <!--<field name="name">Internal Transfer: Caramel &amp; Sun Trading L.L.C</field>-->
+            <!--<field name="sequence_id">17</field>-->
+            <!--<field name="code">internal</field>-->
+            <!--<field name="default_location_src_id" eval="stock.stock_location_stock"/>-->
+            <!--<field name="default_location_dest_id" eval="stock_location_cst_llc"/>-->
+        <!--</record>-->
+
+
+        <record id="stock_location_enspa_ltd" model="stock.location">
+            <field name="name">EnSpa Limited</field>
+            <field name="posx">0</field>
+            <field name="location_id" model="stock.location"
+                eval="obj().env.ref('stock.warehouse0').lot_stock_id.id"/>
+        </record>
+        <!--<record id="picking_type_int_enspa_ltd" model="stock.picking.type">-->
+            <!--<field name="name">Internal Transfer: EnSpa Limited</field>-->
+            <!--<field name="sequence_id">17</field>-->
+            <!--<field name="code">internal</field>-->
+            <!--<field name="warehouse_id" eval="stock.warehouse0"/>-->
+            <!--<field name="default_location_src_id" ref="stock.stock_location_stock"/>-->
+            <!--<field name="default_location_dest_id" ref="stock_location_enspa_ltd"/>-->
+        <!--</record>-->
+
+        <record id="stock_location_fds" model="stock.location">
+            <field name="name">French Department Store</field>
+            <field name="posx">0</field>
+            <field name="location_id" model="stock.location"
+                eval="obj().env.ref('stock.warehouse0').lot_stock_id.id"/>
+        </record>
+        <!--<record id="picking_type_int_fds" model="stock.picking.type">-->
+            <!--<field name="name">Internal Transfer: French Department Store</field>-->
+            <!--<field name="sequence_id">17</field>-->
+            <!--<field name="code">internal</field>-->
+            <!--<field name="warehouse_id" eval="stock.warehouse0"/>-->
+            <!--<field name="default_location_src_id" ref="stock.stock_location_stock"/>-->
+            <!--<field name="default_location_dest_id" ref="stock_location_fds"/>-->
+        <!--</record>-->
+
+
+        <record id="stock_location_fllbm" model="stock.location">
+            <field name="name">FDS LLC- LE BHV MARA</field>
+            <field name="posx">0</field>
+            <field name="location_id" model="stock.location"
+                eval="obj().env.ref('stock.warehouse0').lot_stock_id.id"/>
+        </record>
+        <!--<record id="picking_type_int_fllbm" model="stock.picking.type">-->
+            <!--<field name="name">Internal Transfer: FDS LLC- LE BHV MARA</field>-->
+            <!--<field name="sequence_id">17</field>-->
+            <!--<field name="code">internal</field>-->
+            <!--<field name="warehouse_id" eval="stock.warehouse0"/>-->
+            <!--<field name="default_location_src_id" ref="stock.stock_location_stock"/>-->
+            <!--<field name="default_location_dest_id" ref="stock_location_fllbm"/>-->
+        <!--</record>-->
+
+
+        <record id="stock_location_hmerc" model="stock.location">
+            <field name="name">Hamleys - Middle East Retail Co.</field>
+            <field name="posx">0</field>
+            <field name="location_id" model="stock.location"
+                eval="obj().env.ref('stock.warehouse0').lot_stock_id.id"/>
+        </record>
+        <!--<record id="picking_type_int_hmerc" model="stock.picking.type">-->
+            <!--<field name="name">Internal Transfer: Hamleys - Middle East Retail Co.</field>-->
+            <!--<field name="sequence_id">17</field>-->
+            <!--<field name="code">internal</field>-->
+            <!--<field name="warehouse_id" eval="stock.warehouse0"/>-->
+            <!--<field name="default_location_src_id" ref="stock.stock_location_stock"/>-->
+            <!--<field name="default_location_dest_id" ref="stock_location_hmerc"/>-->
+        <!--</record>-->
+
+        <record id="stock_location_hrbs" model="stock.location">
+            <field name="name">Honey Rose Beauty &amp; Spa</field>
+            <field name="posx">0</field>
+            <field name="location_id" model="stock.location"
+                eval="obj().env.ref('stock.warehouse0').lot_stock_id.id"/>
+        </record>
+        <!--<record id="picking_type_int_hrbs" model="stock.picking.type">-->
+            <!--<field name="name">Internal Transfer: Honey Rose Beauty &amp; Spa</field>-->
+            <!--<field name="sequence_id">17</field>-->
+            <!--<field name="code">internal</field>-->
+            <!--<field name="warehouse_id" eval="stock.warehouse0"/>-->
+            <!--<field name="default_location_src_id" ref="stock.stock_location_stock"/>-->
+            <!--<field name="default_location_dest_id" ref="stock_location_hrbs"/>-->
+        <!--</record>-->
+
+
+        <record id="stock_location_imarspa" model="stock.location">
+            <field name="name">Imar Spa</field>
+            <field name="posx">0</field>
+            <field name="location_id" model="stock.location"
+                eval="obj().env.ref('stock.warehouse0').lot_stock_id.id"/>
+        </record>
+        <!--<record id="picking_type_int_imarspa" model="stock.picking.type">-->
+            <!--<field name="name">Internal Transfer: Imar Spa</field>-->
+            <!--<field name="sequence_id">17</field>-->
+            <!--<field name="code">internal</field>-->
+            <!--<field name="warehouse_id" eval="stock.warehouse0"/>-->
+            <!--<field name="default_location_src_id" ref="stock.stock_location_stock"/>-->
+            <!--<field name="default_location_dest_id" ref="stock_location_imarspa"/>-->
+        <!--</record>-->
+
+
+        <record id="stock_location_sitllc" model="stock.location">
+            <field name="name">Sauce International Trading L.L.C</field>
+            <field name="posx">0</field>
+            <field name="location_id" model="stock.location"
+                eval="obj().env.ref('stock.warehouse0').lot_stock_id.id"/>
+        </record>
+        <!--<record id="picking_type_int_sitllc" model="stock.picking.type">-->
+            <!--<field name="name">Internal Transfer: Sauce International Trading L.L.C</field>-->
+            <!--<field name="sequence_id">17</field>-->
+            <!--<field name="code">internal</field>-->
+            <!--<field name="warehouse_id" eval="stock.warehouse0"/>-->
+            <!--<field name="default_location_src_id" ref="stock.stock_location_stock"/>-->
+            <!--<field name="default_location_dest_id" ref="stock_location_sitllc"/>-->
+        <!--</record>-->
+
+
+        <record id="stock_location_shs" model="stock.location">
+            <field name="name">Say Hair Salon</field>
+            <field name="posx">0</field>
+            <field name="location_id" model="stock.location"
+                eval="obj().env.ref('stock.warehouse0').lot_stock_id.id"/>
+        </record>
+        <!--<record id="picking_type_int_shs" model="stock.picking.type">-->
+            <!--<field name="name">Internal Transfer: Say Hair Salon</field>-->
+            <!--<field name="sequence_id">17</field>-->
+            <!--<field name="code">internal</field>-->
+            <!--<field name="warehouse_id" eval="stock.warehouse0"/>-->
+            <!--<field name="default_location_src_id" ref="stock.stock_location_stock"/>-->
+            <!--<field name="default_location_dest_id" ref="stock_location_shs"/>-->
+        <!--</record>-->
+
+
+        <record id="stock_location_slc" model="stock.location">
+            <field name="name">Sharjah ladies club</field>
+            <field name="posx">0</field>
+            <field name="location_id" model="stock.location"
+                eval="obj().env.ref('stock.warehouse0').lot_stock_id.id"/>
+        </record>
+        <!--<record id="picking_type_int_slc" model="stock.picking.type">-->
+            <!--<field name="name">Internal Transfer: Sharjah ladies club</field>-->
+            <!--<field name="sequence_id">17</field>-->
+            <!--<field name="code">internal</field>-->
+            <!--<field name="warehouse_id" eval="stock.warehouse0"/>-->
+            <!--<field name="default_location_src_id" ref="stock.stock_location_stock"/>-->
+            <!--<field name="default_location_dest_id" ref="stock_location_slc"/>-->
+        <!--</record>-->
+
+
+        <record id="product_attribute_oz" model="product.attribute">
+            <field name="name">OZ</field>
+            <field name="type">select</field>
+        </record>
+        <record id="product_attribute_oz_05" model="product.attribute.value">
+            <field name="name">0.5</field>
+            <field name="attribute_id" ref="product_attribute_oz"/>
+        </record>
+        <record id="product_attribute_oz_1" model="product.attribute.value">
+            <field name="name">1</field>
+            <field name="attribute_id" ref="product_attribute_oz"/>
+        </record>
+        <record id="product_attribute_oz_125" model="product.attribute.value">
+            <field name="name">1.25</field>
+            <field name="attribute_id" ref="product_attribute_oz"/>
+        </record>
+        <record id="product_attribute_oz_2" model="product.attribute.value">
+            <field name="name">2</field>
+            <field name="attribute_id" ref="product_attribute_oz"/>
+        </record>
+        <record id="product_attribute_oz_3" model="product.attribute.value">
+            <field name="name">3</field>
+            <field name="attribute_id" ref="product_attribute_oz"/>
+        </record>
+        <record id="product_attribute_oz_4" model="product.attribute.value">
+            <field name="name">4</field>
+            <field name="attribute_id" ref="product_attribute_oz"/>
+        </record>
+        <record id="product_attribute_oz_8" model="product.attribute.value">
+            <field name="name">8</field>
+            <field name="attribute_id" ref="product_attribute_oz"/>
+        </record>
+        <record id="product_attribute_oz_12" model="product.attribute.value">
+            <field name="name">12</field>
+            <field name="attribute_id" ref="product_attribute_oz"/>
+        </record>
+        <record id="product_attribute_oz_33" model="product.attribute.value">
+            <field name="name">33</field>
+            <field name="attribute_id" ref="product_attribute_oz"/>
+        </record>
+
+
+        <record id="product_attribute_kg" model="product.attribute">
+            <field name="name">KG</field>
+            <field name="type">select</field>
+        </record>
+        <record id="product_attribute_kg_1" model="product.attribute.value">
+            <field name="name">0.094</field>
+            <field name="attribute_id" ref="product_attribute_kg"/>
+        </record>
+        <record id="product_attribute_kg_2" model="product.attribute.value">
+            <field name="name">0.151</field>
+            <field name="attribute_id" ref="product_attribute_kg"/>
+        </record>
+        <record id="product_attribute_kg_3" model="product.attribute.value">
+            <field name="name">0.181</field>
+            <field name="attribute_id" ref="product_attribute_kg"/>
+        </record>
+        <record id="product_attribute_kg_4" model="product.attribute.value">
+            <field name="name">0.214</field>
+            <field name="attribute_id" ref="product_attribute_kg"/>
+        </record>
+        <record id="product_attribute_kg_5" model="product.attribute.value">
+            <field name="name">0.302</field>
+            <field name="attribute_id" ref="product_attribute_kg"/>
+        </record>
+        <record id="product_attribute_kg_6" model="product.attribute.value">
+            <field name="name">0.476</field>
+            <field name="attribute_id" ref="product_attribute_kg"/>
+        </record>
+        <record id="product_attribute_kg_7" model="product.attribute.value">
+            <field name="name">0.481</field>
+            <field name="attribute_id" ref="product_attribute_kg"/>
+        </record>
+        <record id="product_attribute_kg_8" model="product.attribute.value">
+            <field name="name">0.566</field>
+            <field name="attribute_id" ref="product_attribute_kg"/>
+        </record>
+        <record id="product_attribute_kg_9" model="product.attribute.value">
+            <field name="name">1.209</field>
+            <field name="attribute_id" ref="product_attribute_kg"/>
+        </record>
+        <record id="product_attribute_kg_10" model="product.attribute.value">
+            <field name="name">1.247</field>
+            <field name="attribute_id" ref="product_attribute_kg"/>
+        </record>
+        <record id="product_attribute_kg_11" model="product.attribute.value">
+            <field name="name">1.436</field>
+            <field name="attribute_id" ref="product_attribute_kg"/>
+        </record>
+        <record id="product_attribute_kg_12" model="product.attribute.value">
+            <field name="name">1.5</field>
+            <field name="attribute_id" ref="product_attribute_kg"/>
+        </record>
+        <record id="product_attribute_kg_13" model="product.attribute.value">
+            <field name="name">2.267</field>
+            <field name="attribute_id" ref="product_attribute_kg"/>
+        </record>
+
+
+        <record id="product_attribute_gm" model="product.attribute">
+            <field name="name">GM</field>
+            <field name="type">select</field>
+        </record>
+        <record id="product_attribute_gm_1" model="product.attribute.value">
+            <field name="name">4</field>
+            <field name="attribute_id" ref="product_attribute_gm"/>
+        </record>
+        <record id="product_attribute_gm_2" model="product.attribute.value">
+            <field name="name">50</field>
+            <field name="attribute_id" ref="product_attribute_gm"/>
+        </record>
+        <record id="product_attribute_gm_3" model="product.attribute.value">
+            <field name="name">250</field>
+            <field name="attribute_id" ref="product_attribute_gm"/>
+        </record>
+        <record id="product_attribute_gm_4" model="product.attribute.value">
+            <field name="name">500</field>
+            <field name="attribute_id" ref="product_attribute_gm"/>
+        </record>
+        <record id="product_attribute_gm_5" model="product.attribute.value">
+            <field name="name">3</field>
+            <field name="attribute_id" ref="product_attribute_gm"/>
+        </record>
+
+        <record id="product_attribute_flavour" model="product.attribute">
+            <field name="name">Flavour</field>
+            <field name="type">select</field>
+        </record>
+        <record id="product_attribute_flavour_1" model="product.attribute.value">
+            <field name="name">Banana</field>
+            <field name="attribute_id" ref="product_attribute_flavour"/>
+        </record>
+        <record id="product_attribute_flavour_2" model="product.attribute.value">
+            <field name="name">Blueberry</field>
+            <field name="attribute_id" ref="product_attribute_flavour"/>
+        </record>
+        <record id="product_attribute_flavour_3" model="product.attribute.value">
+            <field name="name">Kiwi</field>
+            <field name="attribute_id" ref="product_attribute_flavour"/>
+        </record>
+        <record id="product_attribute_flavour_4" model="product.attribute.value">
+            <field name="name">Mango</field>
+            <field name="attribute_id" ref="product_attribute_flavour"/>
+        </record>
+        <record id="product_attribute_flavour_5" model="product.attribute.value">
+            <field name="name">Melon</field>
+            <field name="attribute_id" ref="product_attribute_flavour"/>
+        </record>
+        <record id="product_attribute_flavour_6" model="product.attribute.value">
+            <field name="name">Vanila</field>
+            <field name="attribute_id" ref="product_attribute_flavour"/>
+        </record>
+        <record id="product_attribute_flavour_7" model="product.attribute.value">
+            <field name="name">Sunshade Blueberry</field>
+            <field name="attribute_id" ref="product_attribute_flavour"/>
+        </record>
+        <record id="product_attribute_flavour_8" model="product.attribute.value">
+            <field name="name">Sunshade Raspberry</field>
+            <field name="attribute_id" ref="product_attribute_flavour"/>
+        </record>
+        <record id="product_attribute_flavour_9" model="product.attribute.value">
+            <field name="name">Sunshade Slate</field>
+            <field name="attribute_id" ref="product_attribute_flavour"/>
+        </record>
+        <record id="product_attribute_flavour_10" model="product.attribute.value">
+            <field name="name">Sunshade Teal</field>
+            <field name="attribute_id" ref="product_attribute_flavour"/>
+        </record>
+
+        <!-- Color -->
+        <record id="product_attribute_color" model="product.attribute">
+            <field name="name">Color</field>
+            <field name="type">select</field>
+        </record>
+        <record id="product_attribute_color_1" model="product.attribute.value">
+            <field name="name">Pewter</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_2" model="product.attribute.value">
+            <field name="name">Pink</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_3" model="product.attribute.value">
+            <field name="name">Blue</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_4" model="product.attribute.value">
+            <field name="name">Cream</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_5" model="product.attribute.value">
+            <field name="name">Espresso</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_6" model="product.attribute.value">
+            <field name="name">Bordeaux</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_7" model="product.attribute.value">
+            <field name="name">Stone</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_8" model="product.attribute.value">
+            <field name="name">Camel</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_9" model="product.attribute.value">
+            <field name="name">Black</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_10" model="product.attribute.value">
+            <field name="name">Mocha</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_11" model="product.attribute.value">
+            <field name="name">Red</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_12" model="product.attribute.value">
+            <field name="name">White</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_13" model="product.attribute.value">
+            <field name="name">Ruby</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_14" model="product.attribute.value">
+            <field name="name">Green</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_15" model="product.attribute.value">
+            <field name="name">Lavander</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+        <record id="product_attribute_color_16" model="product.attribute.value">
+            <field name="name">Pool Blue</field>
+            <field name="attribute_id" ref="product_attribute_color"/>
+        </record>
+
+        <!-- size -->
+        <record id="product_attribute_size" model="product.attribute">
+            <field name="name">Size</field>
+            <field name="type">select</field>
+        </record>
+        <record id="product_attribute_size_1" model="product.attribute.value">
+            <field name="name">2</field>
+            <field name="attribute_id" ref="product_attribute_size"/>
+        </record>
+        <record id="product_attribute_size_2" model="product.attribute.value">
+            <field name="name">3</field>
+            <field name="attribute_id" ref="product_attribute_size"/>
+        </record>
+        <record id="product_attribute_size_3" model="product.attribute.value">
+            <field name="name">1</field>
+            <field name="attribute_id" ref="product_attribute_size"/>
+        </record>
+        <record id="product_attribute_size_4" model="product.attribute.value">
+            <field name="name">Small</field>
+            <field name="attribute_id" ref="product_attribute_size"/>
+        </record>
+        <record id="product_attribute_size_5" model="product.attribute.value">
+            <field name="name">Large</field>
+            <field name="attribute_id" ref="product_attribute_size"/>
+        </record>
+
+        <!-- Pattern -->
+        <record id="product_attribute_pattern" model="product.attribute">
+            <field name="name">Pattern</field>
+            <field name="type">select</field>
+        </record>
+        <record id="product_attribute_pattern_1" model="product.attribute.value">
+            <field name="name">Cream/Warm Grey</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_2" model="product.attribute.value">
+            <field name="name">Aqua Ice/White Stars</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_3" model="product.attribute.value">
+            <field name="name">Stone/White Circles</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_4" model="product.attribute.value">
+            <field name="name">Dove/Cream</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_5" model="product.attribute.value">
+            <field name="name">Ocean/Cream</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_6" model="product.attribute.value">
+            <field name="name">Stone/Cream</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_7" model="product.attribute.value">
+            <field name="name">White/Blush/Cream/Pink</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_8" model="product.attribute.value">
+            <field name="name">White/Ocean/Aqua Ice/Blue</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_9" model="product.attribute.value">
+            <field name="name">White/Stone/Cream/ Dove</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_10" model="product.attribute.value">
+            <field name="name">White-Elephant</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_11" model="product.attribute.value">
+            <field name="name">Pink/White-Tutu</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_12" model="product.attribute.value">
+            <field name="name">Stone/White-Rocking Horse</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_13" model="product.attribute.value">
+            <field name="name">Blue/Cream</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_14" model="product.attribute.value">
+            <field name="name">Under Construction</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_15" model="product.attribute.value">
+            <field name="name">Sports Team</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_16" model="product.attribute.value">
+            <field name="name">Space</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_17" model="product.attribute.value">
+            <field name="name">Skater</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_18" model="product.attribute.value">
+            <field name="name">Sharks</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_19" model="product.attribute.value">
+            <field name="name">School Rules</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_20" model="product.attribute.value">
+            <field name="name">Rainbow</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_21" model="product.attribute.value">
+            <field name="name">Pirates</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_22" model="product.attribute.value">
+            <field name="name">Blue-Star</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_23" model="product.attribute.value">
+            <field name="name">Oyster-Fleur de lis</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_24" model="product.attribute.value">
+            <field name="name">Pearl-Crown</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_25" model="product.attribute.value">
+            <field name="name">Pink-Heart</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_26" model="product.attribute.value">
+            <field name="name">Candy</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_27" model="product.attribute.value">
+            <field name="name">Cars and Truck</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_28" model="product.attribute.value">
+            <field name="name">Christmas Rocks</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_29" model="product.attribute.value">
+            <field name="name">Nature</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_30" model="product.attribute.value">
+            <field name="name">Moon and Back</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_31" model="product.attribute.value">
+            <field name="name">Little Monsters</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_32" model="product.attribute.value">
+            <field name="name">Jungle Fun</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_33" model="product.attribute.value">
+            <field name="name">Flying High</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_34" model="product.attribute.value">
+            <field name="name">Fire Truck Dog</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_35" model="product.attribute.value">
+            <field name="name">Butterfly Trio</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_36" model="product.attribute.value">
+            <field name="name">Dinosaur</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_37" model="product.attribute.value">
+            <field name="name">Cupcake</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_38" model="product.attribute.value">
+            <field name="name">Butterflies</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_39" model="product.attribute.value">
+            <field name="name">Valentine</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_40" model="product.attribute.value">
+            <field name="name">Trick or Treat</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_41" model="product.attribute.value">
+            <field name="name">Frosty Friends</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_42" model="product.attribute.value">
+            <field name="name">Halloween Fairies</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_43" model="product.attribute.value">
+            <field name="name">Happy Halloween</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_44" model="product.attribute.value">
+            <field name="name">Happy Halloween TOT</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_45" model="product.attribute.value">
+            <field name="name">Holly Jolly</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_46" model="product.attribute.value">
+            <field name="name">Peace</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+        <record id="product_attribute_pattern_47" model="product.attribute.value">
+            <field name="name">Seasons Greetings</field>
+            <field name="attribute_id" ref="product_attribute_pattern"/>
+        </record>
+
+        <!-- Number -->
+        <record id="product_attribute_number" model="product.attribute">
+            <field name="name">Number</field>
+            <field name="type">select</field>
+        </record>
+        <record id="product_attribute_number_1" model="product.attribute.value">
+            <field name="name">6-8</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_2" model="product.attribute.value">
+            <field name="name">2T-5T</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_3" model="product.attribute.value">
+            <field name="name">10-14</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_4" model="product.attribute.value">
+            <field name="name">MN20</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_5" model="product.attribute.value">
+            <field name="name">MN22</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_6" model="product.attribute.value">
+            <field name="name">MN 11</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_7" model="product.attribute.value">
+            <field name="name">MN 10</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_8" model="product.attribute.value">
+            <field name="name">MN 12</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_9" model="product.attribute.value">
+            <field name="name">MN 02</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_10" model="product.attribute.value">
+            <field name="name">MN 06</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_11" model="product.attribute.value">
+            <field name="name">MN 05</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_12" model="product.attribute.value">
+            <field name="name">MN 09</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_13" model="product.attribute.value">
+            <field name="name">MN23</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_14" model="product.attribute.value">
+            <field name="name">MN 17</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_15" model="product.attribute.value">
+            <field name="name">MN 08</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_16" model="product.attribute.value">
+            <field name="name">MN 16</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_17" model="product.attribute.value">
+            <field name="name">MM21</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_18" model="product.attribute.value">
+            <field name="name">MN 04</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_19" model="product.attribute.value">
+            <field name="name">MN 01</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_20" model="product.attribute.value">
+            <field name="name">MN 03</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_21" model="product.attribute.value">
+            <field name="name">MN 14</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_22" model="product.attribute.value">
+            <field name="name">MN19</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_23" model="product.attribute.value">
+            <field name="name">MN 07</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_24" model="product.attribute.value">
+            <field name="name">MN 18</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_25" model="product.attribute.value">
+            <field name="name">MN 13</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+        <record id="product_attribute_number_26" model="product.attribute.value">
+            <field name="name">MN 15</field>
+            <field name="attribute_id" ref="product_attribute_number"/>
+        </record>
+
+        <!-- Piece -->
+        <record id="product_attribute_piece" model="product.attribute">
+            <field name="name">Piece</field>
+            <field name="type">select</field>
+        </record>
+        <record id="product_attribute_piece_1" model="product.attribute.value">
+            <field name="name">12</field>
+            <field name="attribute_id" ref="product_attribute_piece"/>
+        </record>
+        <record id="product_attribute_piece_2" model="product.attribute.value">
+            <field name="name">4</field>
+            <field name="attribute_id" ref="product_attribute_piece"/>
+        </record>
+        <record id="product_attribute_piece_3" model="product.attribute.value">
+            <field name="name">90</field>
+            <field name="attribute_id" ref="product_attribute_piece"/>
+        </record>
+        <record id="product_attribute_piece_4" model="product.attribute.value">
+            <field name="name">9</field>
+            <field name="attribute_id" ref="product_attribute_piece"/>
+        </record>
+        <record id="product_attribute_piece_5" model="product.attribute.value">
+            <field name="name">8</field>
+            <field name="attribute_id" ref="product_attribute_piece"/>
+        </record>
+        <record id="product_attribute_piece_6" model="product.attribute.value">
+            <field name="name">6</field>
+            <field name="attribute_id" ref="product_attribute_piece"/>
+        </record>
+        <record id="product_attribute_piece_7" model="product.attribute.value">
+            <field name="name">2</field>
+            <field name="attribute_id" ref="product_attribute_piece"/>
+        </record>
+
+        <!-- Shade -->
+        <record id="product_attribute_shade" model="product.attribute">
+            <field name="name">Shade</field>
+            <field name="type">select</field>
+        </record>
+        <record id="product_attribute_shade_1" model="product.attribute.value">
+            <field name="name">Favourate Teacher</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_2" model="product.attribute.value">
+            <field name="name">Class Clown</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_3" model="product.attribute.value">
+            <field name="name">Under the Sea</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_4" model="product.attribute.value">
+            <field name="name">Sun Kissed</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_5" model="product.attribute.value">
+            <field name="name">Sugar Hugs</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_6" model="product.attribute.value">
+            <field name="name">Strawberry-N-Cream</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_7" model="product.attribute.value">
+            <field name="name">Secret Dairy</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_8" model="product.attribute.value">
+            <field name="name">Poppy Fields</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_9" model="product.attribute.value">
+            <field name="name">Pink-A-Boo</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_10" model="product.attribute.value">
+            <field name="name">Sweet Lavender</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_11" model="product.attribute.value">
+            <field name="name">Tickle-Me-Pink</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_12" model="product.attribute.value">
+            <field name="name">Blue Bell</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_13" model="product.attribute.value">
+            <field name="name">Bubble Gum</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_14" model="product.attribute.value">
+            <field name="name">Mermaid Blue</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_15" model="product.attribute.value">
+            <field name="name">Little Poppet</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_16" model="product.attribute.value">
+            <field name="name">Butterfly Wings</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_17" model="product.attribute.value">
+            <field name="name">Cheeky Bunny</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_18" model="product.attribute.value">
+            <field name="name">Cherry Macaroon</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_19" model="product.attribute.value">
+            <field name="name">Field Trip</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_20" model="product.attribute.value">
+            <field name="name">Honey Twinkles</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_21" model="product.attribute.value">
+            <field name="name">Jazzberry Jam</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_22" model="product.attribute.value">
+            <field name="name">Kiss the Frog</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+        <record id="product_attribute_shade_23" model="product.attribute.value">
+            <field name="name">kool kids</field>
+            <field name="attribute_id" ref="product_attribute_shade"/>
+        </record>
+
+        <!-- ml -->
+        <record id="product_attribute_ml" model="product.attribute">
+            <field name="name">ML</field>
+            <field name="type">select</field>
+        </record>
+        <record id="product_attribute_ml_1" model="product.attribute.value">
+            <field name="name">100</field>
+            <field name="attribute_id" ref="product_attribute_ml"/>
+        </record>
+        <record id="product_attribute_ml_2" model="product.attribute.value">
+            <field name="name">200</field>
+            <field name="attribute_id" ref="product_attribute_ml"/>
+        </record>
+        <record id="product_attribute_ml_3" model="product.attribute.value">
+            <field name="name">500</field>
+            <field name="attribute_id" ref="product_attribute_ml"/>
+        </record>
+        <record id="product_attribute_ml_4" model="product.attribute.value">
+            <field name="name">1000</field>
+            <field name="attribute_id" ref="product_attribute_ml"/>
+        </record>
+
+        <record id="product_attribute_pack" model="product.attribute">
+            <field name="name">PACK</field>
+            <field name="type">select</field>
+        </record>
+        <record id="product_attribute_pack_1" model="product.attribute.value">
+            <field name="name">3 * 50</field>
+            <field name="attribute_id" ref="product_attribute_pack"/>
+        </record>
+        <record id="product_attribute_pack_2" model="product.attribute.value">
+            <field name="name">6 * 50</field>
+            <field name="attribute_id" ref="product_attribute_pack"/>
+        </record>
+        <record id="product_attribute_pack_3" model="product.attribute.value">
+            <field name="name">9 * 3</field>
+            <field name="attribute_id" ref="product_attribute_pack"/>
+        </record>
+        <record id="product_attribute_pack_4" model="product.attribute.value">
+            <field name="name">4 * 20</field>
+            <field name="attribute_id" ref="product_attribute_pack"/>
+        </record>
+    </data>
+</odoo>
+

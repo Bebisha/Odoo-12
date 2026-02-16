@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2016 Eficent Business and IT Consulting Services S.L.
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="price_categ_wholesale" model="price.category">
+        <field name="name">Whole Sale Price</field>
+        <field name="percentage">0</field>
+    </record>
+
+    <record id="price_categ_20" model="price.category">
+        <field name="name">Margin 20(%)</field>
+        <field name="percentage">20</field>
+    </record>
+
+    <record id="price_categ_25" model="price.category">
+        <field name="name">Margin 25(%)</field>
+        <field name="percentage">25</field>
+    </record>
+
+    <record id="price_categ_30" model="price.category">
+        <field name="name">Margin 30(%)</field>
+        <field name="percentage">30</field>
+    </record>
+
+    <record id="price_categ_35" model="price.category">
+        <field name="name">Margin 35(%)</field>
+        <field name="percentage">35</field>
+    </record>
+
+    <record id="price_categ_direct_sale" model="price.category">
+        <field name="name">Direct Sale</field>
+        <field name="percentage">100</field>
+    </record>
+
+</odoo>

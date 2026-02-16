@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- lot.year form -->
+    <record id="lot_year_form_view" model="ir.ui.view">
+        <field name="name">lot.year.form.view</field>
+        <field name="model">lot.year</field>
+        <field name="arch" type="xml">
+            <form string="Lot Year Code">
+                <sheet>
+                    <group col="4" colspan="4">
+                        <field name="code" required="1"/>
+                        <field name="year" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- lot year tree -->
+    <record id="lot_year_tree_view" model="ir.ui.view">
+        <field name="name">lot.year.tree.view</field>
+        <field name="model">lot.year</field>
+        <field name="arch" type="xml">
+            <tree string="Lot Year Code">
+                <field name="code"/>
+                <field name="year"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- lot year action -->
+    <record id="lot_year_action_view" model="ir.actions.act_window">
+        <field name="name">Lot Years</field>
+        <field name="res_model">lot.year</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="lot_year_tree_view"/>
+    </record>
+
+    <menuitem
+        id="menu_lot_year"
+        name="Code for years"
+        action="lot_year_action_view"
+        parent="menu_lot_codes"
+        groups="purchase.group_purchase_manager"/>
+
+</odoo>

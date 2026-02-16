@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <!-- Inherit sale order Form View -->
+        <record id="inherit_picking_form_view" model="ir.ui.view">
+            <field name="name">stock.picking.form.view</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath
+                        expr="//button[@name='%(stock.act_stock_return_picking)d']"
+                       position="replace">
+                    <button name="%(stock.act_stock_return_picking)d"
+                            string="Return"
+                            attrs="{'invisible': ['|', ('state', '!=', 'done'), ('is_locked', '=', False)]}"
+                            type="action"
+                            groups="stock.group_stock_manager"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

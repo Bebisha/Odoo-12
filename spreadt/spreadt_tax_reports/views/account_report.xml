@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Paper Format -->
+        <record id="paperformat_vat_fta" model="report.paperformat">
+            <field name="name">VAT FTA A4</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">0</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">35</field>
+            <field name="dpi">80</field>
+        </record>
+
+        <!-- QWeb Reports -->
+        <report
+            id="action_report_vat_fta"
+            string="VAT FTA Report"
+            model="vat.fta.wiz"
+            name="spreadt_tax_reports.report_vat_fta"
+            report_type="qweb-pdf"
+            paperformat="spreadt_tax_reports.paperformat_vat_fta"
+            />
+
+    </data>
+</odoo>

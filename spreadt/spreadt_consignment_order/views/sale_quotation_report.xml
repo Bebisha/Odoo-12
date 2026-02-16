@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="inherited_report_saleorder_document"
+              inherit_id="sale.report_saleorder_document">
+        <xpath expr="//p[@id='fiscal_position_remark']" position="before">
+            <br/><br/>
+            <div name="signature" t-if="doc.partner_id.is_reseller">
+                <span><b>Signature:</b>________________</span>
+            </div>
+        </xpath>
+    </template>
+</odoo>

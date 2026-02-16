@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_picking_consignment_form" model="ir.ui.view">
+        <field name="name">stock.picking.form.view</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="attributes">
+                <attribute name="attrs">{}</attribute>
+            </field>
+            <xpath expr="//field[@name='move_ids_without_package']/tree//field[@name='product_uom_qty']" position="after">
+                <field name="stock_available"/>
+            </xpath>
+            <xpath expr="//button[@name='action_confirm']"
+                   position="attributes">
+                <attribute name="attrs">{'invisible': ['|',('show_mark_as_todo', '=', False),('is_consignment', '=', False)]}</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_cancel']"
+                   position="before">
+                <field name='is_consignment' invisible="1"/>
+                <button name="action_confirm" state="to_approve"
+                        groups="stock.group_stock_manager"
+                        attrs="{'invisible': [('state', '!=', 'to_approve')]}"
+                        string="Approve" type="object" class="oe_highlight"/>
+                <button name="validate_picking" type="object"
+                        string="Mark as Todo"
+                        attrs="{'invisible': ['|',('show_mark_as_todo', '=', False),('is_consignment', '=', True)]}" class="oe_highlight" groups="base.group_user"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_picking_tree_all_consignment"
+            model="ir.actions.act_window">
+            <field name="name">Stock Operations</field>
+            <field name="res_model">stock.picking</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,kanban,form,calendar</field>
+            <field name="domain">[('is_consignment', '=', True)
+                ]</field>
+            <field name="context">{
+                    'default_is_consignment': True,'planned_picking': True
+            }
+            </field>
+            <field name="search_view_id"
+                   ref="stock.view_picking_internal_search"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Click here to create a new transfer.
+              </p><p>
+                You can either do it immediately or mark it as Todo for future processing. Use your scanner to validate the transferred quantity quicker.
+              </p>
+            </field>
+        </record>
+
+    <menuitem id="menu_sale_consignment_order" name="Consignment Order"
+        parent="sale.sale_order_menu" action="action_picking_tree_all_consignment"
+              sequence="4"/>
+</odoo>

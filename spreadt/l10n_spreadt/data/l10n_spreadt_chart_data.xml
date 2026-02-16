@@ -1,0 +1,517 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+
+        <!--<record model="account.account.template" id="transfer_account_id_spreadt">-->
+             <!--<field name="name">Transfer account</field>-->
+             <!--<field name="code">TA</field>-->
+             <!--<field name="user_type_id" ref="account.data_account_type_current_assets" />-->
+             <!--<field name="reconcile" eval="True" />-->
+         <!--</record>-->
+
+         <record id="configurable_chart_template_spreadt" model="account.chart.template">
+             <field name="name">Configurable Account Chart Template - SpreadT</field>
+             <field name="code_digits">6</field>
+             <field name="currency_id" ref="base.AED" />
+             <field name="bank_account_code_prefix">101</field>
+             <field name="cash_account_code_prefix">105</field>
+             <field name="transfer_account_code_prefix">100</field>
+             <field name="company_id" ref="base.main_company"/>
+             <field name="complete_tax_set" eval="True"/>
+         </record>
+
+         <!--<record model="account.account.template" id="transfer_account_id_spreadt">-->
+             <!--<field name="chart_template_id" ref="configurable_chart_template_spreadt"/>-->
+         <!--</record>-->
+
+        <!-- FIXED ASSET -->
+        <record id="account_account_acc_depn_amor_spreadt" model="account.account.template">
+            <field name="name">Accm. Depn &amp;amp; Amortisation</field>
+            <field name="code">102</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_comp_peri_spreadt" model="account.account.template">
+            <field name="name">Computer Peripherals</field>
+            <field name="code">102001</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_furn_fix_spreadt" model="account.account.template">
+            <field name="name">Furniture and Fixtures</field>
+            <field name="code">102002</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_off_equip_spreadt" model="account.account.template">
+            <field name="name">Office Equipments</field>
+            <field name="code">102003</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_soft_lig_speed_spreadt" model="account.account.template">
+            <field name="name">Software - Light Speed</field>
+            <field name="code">102004</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_soft_odoo_speed_spreadt" model="account.account.template">
+            <field name="name">Software Odoo</field>
+            <field name="code">102005</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_vehi_suzu_apv_speed_spreadt" model="account.account.template">
+            <field name="name">Vehicle - Suzuki APV</field>
+            <field name="code">102006</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_vehicle_toyo_yaris_speed_spreadt" model="account.account.template">
+            <field name="name">Vehicle - Toyota Yaris</field>
+            <field name="code">102007</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_web_page_development_speed_spreadt" model="account.account.template">
+            <field name="name">Web Page Development</field>
+            <field name="code">102008</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+
+
+        <!-- CURRENT ASSET -->
+        <record id="account_account_closing_stock_spreadt" model="account.account.template">
+            <field name="name">Closing Stock</field>
+            <field name="code">201</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_deposits_spreadt" model="account.account.template">
+            <field name="name">Deposits</field>
+            <field name="code">201001</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_loans_advances_spreadt" model="account.account.template">
+            <field name="name">Loans and Advances</field>
+            <field name="code">202002</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_sun_debtors_spreadt" model="account.account.template">
+            <field name="name">Sundry Debtors</field>
+            <field name="code">203003</field>
+            <field name="user_type_id" ref="account.data_account_type_receivable"/>
+            <field eval="1" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_consignment_spreadt" model="account.account.template">
+            <field name="name">Consignment</field>
+            <field name="code">204004</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_prepayments_spreadt" model="account.account.template">
+            <field name="name">Prepayments</field>
+            <field name="code">205005</field>
+            <field name="user_type_id" ref="account.data_account_type_current_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+
+
+        <!-- BANK AND CASH -->
+        <record id="account_account_cash_in_hand_spreadt" model="account.account.template">
+            <field name="name">Cash in hand</field>
+            <field name="code">301</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_bank_accounts_spreadt" model="account.account.template">
+            <field name="name">Bank Accounts</field>
+            <field name="code">302001</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+
+
+        <!-- PREPAYMENTS -->
+        <record id="account_account_prepaid_medi_insu_spreadt" model="account.account.template">
+            <field name="name">Prepaid Medical Insurance</field>
+            <field name="code">401</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_prepaid_rent_off_spreadt" model="account.account.template">
+            <field name="name">Prepaid Rent Office</field>
+            <field name="code">401001</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_prepaid_rent_staff_acco_spreadt" model="account.account.template">
+            <field name="name">Prepaid Rent Staff Accommadation</field>
+            <field name="code">401002</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_prepaid_prop_insu_spreadt" model="account.account.template">
+            <field name="name">Prepaid Property Insurance</field>
+            <field name="code">401003</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_prepaid_trade_lic_fee_spreadt" model="account.account.template">
+            <field name="name">Prepaid Trade License Fee</field>
+            <field name="code">401004</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_prepaid_vehicle_insu_spreadt" model="account.account.template">
+            <field name="name">Prepaid Vehicle Insurance</field>
+            <field name="code">401005</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_prepaid_vehicle_maint_spreadt" model="account.account.template">
+            <field name="name">Prepaid Vehicle Maintainence</field>
+            <field name="code">401006</field>
+            <field name="user_type_id" ref="account.data_account_type_liquidity"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+
+
+        <!-- PREPAYMENTS -->
+        <record id="account_account_mazrui_hold_llc_spreadt" model="account.account.template">
+            <field name="name">Mazrui Holdings L.L.C</field>
+            <field name="code">501</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_mrs_aysha_spreadt" model="account.account.template">
+            <field name="name">Mrs. Aysha</field>
+            <field name="code">501001</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_mrs_nof_abdulla_spreadt" model="account.account.template">
+            <field name="name">Mrs. Nof Abdulla</field>
+            <field name="code">501002</field>
+            <field name="user_type_id" ref="account.data_account_type_equity"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+
+        
+        <!-- CURRENT LIABILITIES -->
+        <record id="account_account_prov_for_stf_term_benf_spreadt" model="account.account.template">
+            <field name="name">Provision for Staff End Terminals Benefits</field>
+            <field name="code">601</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_duties_and_taxes_spreadt" model="account.account.template">
+            <field name="name">Duties and Taxes</field>
+            <field name="code">601001</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_privisions_spreadt" model="account.account.template">
+            <field name="name">Provisions</field>
+            <field name="code">601002</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_sund_cred_spreadt" model="account.account.template">
+            <field name="name">Sundry Creditors</field>
+            <field name="code">601003</field>
+            <field name="user_type_id" ref="account.data_account_type_payable"/>
+            <field eval="1" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_paya_mazrui_hold_spreadt" model="account.account.template">
+            <field name="name">Payable Mazrui Holdings</field>
+            <field name="code">601004</field>
+            <field name="user_type_id" ref="account.data_account_type_current_liabilities"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+
+
+        <!-- EXPENSE -->
+        <record id="account_account_cust_freight_spreadt" model="account.account.template">
+            <field name="name">Customs and Freight</field>
+            <field name="code">701</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_salary_allow_spreadt" model="account.account.template">
+            <field name="name">Salary &amp; Allowances</field>
+            <field name="code">701001</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_audit_fee_spreadt" model="account.account.template">
+            <field name="name">Audit Fee</field>
+            <field name="code">701002</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_bank_charges_spreadt" model="account.account.template">
+            <field name="name">Bank Charges</field>
+            <field name="code">701003</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_dep_amor_spreadt" model="account.account.template">
+            <field name="name">Depreciation &amp; Amortisation</field>
+            <field name="code">701004</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_fuel_exp_spreadt" model="account.account.template">
+            <field name="name">Fuel Expenses</field>
+            <field name="code">701005</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_img_visa_rel_spreadt" model="account.account.template">
+            <field name="name">Immigration and Visa Related</field>
+            <field name="code">701006</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_insu_for_stf_spreadt" model="account.account.template">
+            <field name="name">Insurance for Staff</field>
+            <field name="code">701007</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_lic_leg_exp_spreadt" model="account.account.template">
+            <field name="name">License and Legal Expense</field>
+            <field name="code">701008</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_mobile_rech_spreadt" model="account.account.template">
+            <field name="name">Mobile Recharge</field>
+            <field name="code">701009</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_off_expense_spreadt" model="account.account.template">
+            <field name="name">Office Expense</field>
+            <field name="code">701010</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_off_sup_main_rep_spreadt" model="account.account.template">
+            <field name="name">Office Supplies/Maint/Repairs</field>
+            <field name="code">701011</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_print_station_spreadt" model="account.account.template">
+            <field name="name">Printing &amp; Stationery</field>
+            <field name="code">701012</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_prod_regr_spreadt" model="account.account.template">
+            <field name="name">Product Registration</field>
+            <field name="code">701013</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_refr_exp_spreadt" model="account.account.template">
+            <field name="name">Refreshment Expense</field>
+            <field name="code">701014</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_rent_office_spreadt" model="account.account.template">
+            <field name="name">Rent Office</field>
+            <field name="code">701015</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_rent_staff_accom_spreadt" model="account.account.template">
+            <field name="name">Rent Staff Accomodation</field>
+            <field name="code">701016</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_salik_exp_spreadt" model="account.account.template">
+            <field name="name">Salik Expense</field>
+            <field name="code">701017</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_sell_and_dist_exp_spreadt" model="account.account.template">
+            <field name="name">Selling and Distibution Exp</field>
+            <field name="code">701018</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_tele_fax_int_spreadt" model="account.account.template">
+            <field name="name">Telephone, Fax, Internet</field>
+            <field name="code">701019</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_travel_convey_spreadt" model="account.account.template">
+            <field name="name">Travel &amp; Conveyance</field>
+            <field name="code">701020</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_vehc_rel_oth_exp_spreadt" model="account.account.template">
+            <field name="name">Vehicle Related - Other Expense</field>
+            <field name="code">701021</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_veh_run_exp_spreadt" model="account.account.template">
+            <field name="name">Vehicle Running Expense</field>
+            <field name="code">701022</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_water_and_elec_spreadt" model="account.account.template">
+            <field name="name">Water and Electricity </field>
+            <field name="code">701023</field>
+            <field name="user_type_id" ref="account.data_account_type_expenses"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+
+
+        <!-- DEPRECIATION -->
+        <record id="account_account_comp_peripherals_spreadt" model="account.account.template">
+            <field name="name">Computer Peripherals</field>
+            <field name="code">801</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_furn_and_fix_spreadt" model="account.account.template">
+            <field name="name">Furniture and Fixtures</field>
+            <field name="code">801001</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_off_equip_spreadt" model="account.account.template">
+            <field name="name">Office Equipments</field>
+            <field name="code">801002</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_software_odoo_spreadt" model="account.account.template">
+            <field name="name">Software Odoo</field>
+            <field name="code">801003</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+        <record id="account_account_vehicle_toyota_spreadt" model="account.account.template">
+            <field name="name">Vehicle Toyota</field>
+            <field name="code">801004</field>
+            <field name="user_type_id" ref="account.data_account_type_fixed_assets"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+
+
+        <!-- CURRENT YEAR EARNING -->
+        <record id="account_account_curr_year_earning_spreadt" model="account.account.template">
+            <field name="name">Current Year Earning</field>
+            <field name="code">901</field>
+            <field name="user_type_id" ref="account.data_unaffected_earnings"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+
+
+        <!-- OTHER INCOME -->
+        <record id="account_account_other_income_spreadt" model="account.account.template">
+            <field name="name">Other Income</field>
+            <field name="code">11</field>
+            <field name="user_type_id" ref="account.data_account_type_other_income"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+
+
+        <!-- INCOME -->
+        <record id="account_account_income_spreadt" model="account.account.template">
+            <field name="name">Income</field>
+            <field name="code">12</field>
+            <field name="user_type_id" ref="account.data_account_type_revenue"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+
+        <!-- COST OF REVENUE -->
+        <record id="account_account_cost_of_revenue_spreadt" model="account.account.template">
+            <field name="name">Cost Of Revenue</field>
+            <field name="code">13</field>
+            <field name="user_type_id" ref="account.data_account_type_direct_costs"/>
+            <field eval="0" name="reconcile"/>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+        </record>
+
+
+    </data>
+</odoo>

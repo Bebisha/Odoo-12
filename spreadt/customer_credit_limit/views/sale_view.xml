@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_for_credit_tree" model="ir.ui.view">
+        <field name="name">sale.order.for.credit.inherit.tree</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <tree string="Sales Order">
+                <field name="partner_id"/>
+                <field name="client_order_ref"/>
+                <field name="name"
+                       string="Order Number"/>
+                <field name="amount_total"
+                       sum="Total Tax Included"
+                       widget="monetary"/>
+                <field name="payment_term_id"/>
+                <field name="carrier_id"/>
+                <field name="credit_limit"/>
+                <field name="credit"/>
+                <field name="credit_due"/>
+                <field name="state"
+                       invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_order_form_for_credit_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.for.credit.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="confirm_check" invisible="1"/>
+            </field>
+            <xpath expr="//form/header" position="replace">
+                <header>
+                    <button name="%(sale.action_view_sale_advance_payment_inv)d"
+                            string="Create Invoice"
+                            type="action" class="btn-primary"
+                            attrs="{'invisible': [('invoice_status', '!=', 'to invoice')]}"/>
+                    <button name="%(sale.action_view_sale_advance_payment_inv)d"
+                            string="Create Invoice"
+                            type="action"
+                            context="{'default_advance_payment_method': 'percentage'}"
+                            attrs="{'invisible': ['|',('invoice_status', '!=', 'no'), ('state', '!=', 'sale')]}"/>
+                    <button name="action_quotation_send"
+                            string="Send by Email"
+                            type="object"
+                            states="draft"
+                            class="btn-primary"/>
+                    <button name="print_quotation"
+                            string="Print"
+                            type="object"
+                            states="draft"
+                            class="btn-primary"/>
+                    <button name="action_credit_review"
+                            confirm="Order has been placed for review by accounting as Credit Limit is Over. Order will be confirmed when reviewed!"
+                            attrs="{'invisible':['|',('state','!=','sent'),('confirm_check', '!=', True)]}"
+                            string="Confirm Sale"
+                            class="btn-primary o_sale_confirm"
+                            type="object"/>
+                    <button name="action_confirm" id="action_confirm"
+                            attrs="{'invisible':['|',('state','!=','sent'),('confirm_check', '=', True)]}"
+                            string="Confirm Sale"
+                            class="btn-primary o_sale_confirm"
+                            type="object"/>
+
+                    <button name="action_credit_review"
+                            confirm="Order has been placed for review by accounting as Credit Limit is Over. Order will be confirmed when reviewed!"
+                            attrs="{'invisible':['|',('state','!=','draft'),('confirm_check', '=', False)]}"
+                            string="Confirm Sale"
+                            class="o_sale_confirm"
+                            type="object"/>
+                    <button name="action_confirm"
+                            attrs="{'invisible':['|',('state','!=','draft'),('confirm_check', '=', True)]}"
+                            string="Confirm Sale"
+                            class="o_sale_confirm"
+                            type="object"/>
+                    <button name="action_confirm"
+                            context="{'review_log': True}"
+                            states='credit_review'
+                            string="Override Credit Limit"
+                            class="o_sale_confirm"
+                            type="object"
+                            groups='customer_credit_limit.group_credit_limit'/>
+                    <button name="print_quotation"
+                            string="Print"
+                            type="object"
+                            states="sent,sale"/>
+                    <button name="action_quotation_send"
+                            string="Send by Email"
+                            type="object"
+                            states="sent,sale"/>
+                    <button name="action_cancel"
+                            states="draft,sent,sale"
+                            type="object"
+                            string="Cancel"/>
+                    <button name="action_draft"
+                            states="cancel"
+                            type="object"
+                            string="Set to Quotation"/>
+                    <button name="action_done"
+                            type="object"
+                            string="Lock"
+                            states="sale"
+                            help="If the sale is locked, you can not modify it anymore. However, you will still be able to invoice or deliver."/>
+                    <button name="action_unlock" type="object" string="Unlock" states="done" groups="sales_team.group_sale_manager"/>
+                    <field name="state"
+                           widget="statusbar"
+                           statusbar_visible="draft,sent,sale"/>
+                </header>
+            </xpath>
+            <xpath expr="//notebook/page[2]" position="after">
+                <page string="Credit Review Log"
+                      attrs="{'invisible':[('credit_review_ids','=',[])]}"
+                      groups='customer_credit_limit.group_credit_limit'>
+                    <field name="credit_review_ids">
+                        <tree string="Credit Review Log">
+                            <field name="review_user_id"/>
+                            <field name="review_date"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+            <field name="validity_date" position="before">
+                <field name="available_credit_limit"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="sale.view_sales_order_filter" model="ir.ui.view">
+        <field name="name">sale.order.list.select</field>
+        <field name="model">sale.order</field>
+        <field name="arch" type="xml">
+            <search string="Search Sales Order">
+                <field name="name"
+                       string="Sales Order"
+                       filter_domain="['|',('name','ilike',self),('client_order_ref','ilike',self)]"/>
+                <field name="partner_id"
+                       operator="child_of"/>
+                <field name="user_id"/>
+                <field name="team_id"
+                       string="Sales Team"/>
+                <!--<field name="product_id"/>-->
+                <filter string="My Orders"
+                        domain="[('user_id','=',uid)]"
+                        name="my_sale_orders_filter"/>
+                <separator/>
+                <separator/>
+                <filter string="Credit Review"
+                        name="credit_review"
+                        domain="[('state','=','credit_review')]"/>
+                <filter string="Unread Messages"
+                        name="message_needaction"
+                        domain="[('message_needaction','=',True)]"/>
+                <group expand="0" string="Group By">
+                    <filter name="user_id"
+                            string="Salesperson"
+                            domain="[]"
+                            context="{'group_by':'user_id'}"/>
+                    <filter name="customer"
+                            string="Customer"
+                            domain="[]"
+                            context="{'group_by':'partner_id'}"/>
+                    <filter name="date_order"
+                            string="Order Date"
+                            domain="[]"
+                            context="{'group_by':'date_order'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="sale.action_orders" model="ir.actions.act_window">
+        <field name="name">Sales Orders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+        <field name="search_view_id"
+               ref="sale.sale_order_view_search_inherit_sale"/>
+        <field name="context">{}</field>
+        <field name="domain">[('state', 'not in', ('draft', 'credit_review',
+            'sent', 'cancel'))]
+        </field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create a Quotation, the first step of a new sale.
+            </p>
+            <p>
+                Once the quotation is confirmed, it becomes a sales order.
+                You'll be able to invoice it and collect payments.
+                From the <i>Sales Orders</i> menu, you can track delivery
+                orders or services.
+            </p>
+        </field>
+    </record>
+    <record id="action_orders_credit_review" model="ir.actions.act_window">
+        <field name="name">Credit Reviews</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+        <field name="search_view_id" ref="sale.view_sales_order_filter"/>
+        <field name="context">{}</field>
+        <field name="domain">[('state', '=', 'credit_review')]</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Create a Quotation, the first step of a new sale.
+            </p>
+            <p>
+                Once the quotation is confirmed, it becomes a sales order.
+                You'll be able to invoice it and collect payments.
+                From the <i>Sales Orders</i> menu, you can track delivery
+                orders or services.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_so_credit_review"
+              name="Credit Review"
+              parent="account.menu_finance_reports"
+              action="customer_credit_limit.action_orders_credit_review"/>
+</odoo>
+

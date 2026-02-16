@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+         <report
+            string="PACKING LIST AND WEIGHT"
+            id="action_report_pickinglist_weight"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            name="spreadt_stock_reports.report_pickinglist_view"
+            file="spreadt_stock_reports.report_pickinglist_view"
+            print_report_name="'Picking List - %s - %s' % (object.partner_id.name or '', object.name)"
+        />
+
+    </data>
+</odoo>

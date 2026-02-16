@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="multiple_invoice_payment_form_view" model="ir.ui.view">
+        <field name="name">multiple.invoice.payment.form.view</field>
+        <field name="model">multiple.invoice.payment</field>
+        <field name="arch" type="xml">
+            <form string="Multiple Invoice Payment">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="payment_type" invisible="1"/>
+                            <field name="partner_id" required="1"
+                                   options="{'no_create': True, 'no_open': True}"
+                                   readonly="1"/>
+                            <field name="journal_id" required="1"
+                                   options="{'no_create': True, 'no_open': True}"/>
+                        </group>
+                        <group>
+                            <field name="payment_date" required="1"/>
+                            <field name="communication"/>
+                            <field name="currency_id"
+                                   groups="base.group_multi_currency"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="inv_pay_line_ids" nolebal="1">
+                            <tree create="false" editable="bottom">
+                                <field name="inv_pay_id" invisible="1"/>
+                                <field name="invoice_id"/>
+                                <field name="amount"/>
+                                <field name="currency_id" invisible="1"/>
+                                <field name="pay_currency_id" invisible="1"/>
+                                <field name="amount_to_pay"/>
+                                <field name="payment_difference_handling"
+                                       attrs="{'invisible': [('payment_difference', '=', 0.0)], 'required': [('payment_difference', '!=', 0.0)]}"/>
+                                <field name="writeoff_account_id"
+                                       attrs="{'invisible': [('payment_difference_handling','!=','reconcile')], 'required': [('payment_difference_handling','!=','open')]}"/>
+                                <field name="writeoff_label"
+                                       attrs="{'invisible': [('payment_difference_handling','!=','reconcile')], 'required': [('payment_difference_handling','!=','open')]}"/>
+                                <field name="payment_difference"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <footer>
+                        <button string="Proceed" name="proceed_to_payment"
+                                type="object" default_focus="1"
+                                class="btn-primary"/>
+                        <button string="Cancel" class="btn-default"
+                                special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action for multi invoice payment -->
+    <act_window id="action_multi_invoice_payment" multi="True"
+                key2="client_action_multi" name="Multiple Invoice Payment"
+                res_model="multiple.invoice.payment"
+                src_model="account.invoice" view_mode="form" target="new"
+                view_type="form"/>
+
+</odoo>

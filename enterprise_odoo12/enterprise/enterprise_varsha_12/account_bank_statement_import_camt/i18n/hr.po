@@ -1,0 +1,57 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * account_bank_statement_import_camt
+# 
+# Translators:
+# Bole <bole@dajmi5.com>, 2020
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-05-21 10:50+0000\n"
+"PO-Revision-Date: 2018-08-24 11:36+0000\n"
+"Last-Translator: Bole <bole@dajmi5.com>, 2020\n"
+"Language-Team: Croatian (https://www.transifex.com/odoo/teams/41243/hr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: hr\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#. module: account_bank_statement_import_camt
+#: model:ir.model,name:account_bank_statement_import_camt.model_account_bank_statement_import
+msgid "Import Bank Statement"
+msgstr "Uvoz bankovnog izvoda"
+
+#. module: account_bank_statement_import_camt
+#: model_terms:ir.ui.view,arch_db:account_bank_statement_import_camt.account_bank_statement_import_camt
+msgid ""
+"In case there are statements targeting multiple accounts, only those "
+"targeting the current account will be imported."
+msgstr ""
+"Ukoliko postoje izvodi koji se odnose na više bankovnih računa, samo oni "
+"koji se odnose na trenutni će biti uveženi."
+
+#. module: account_bank_statement_import_camt
+#: model:ir.model,name:account_bank_statement_import_camt.model_account_journal
+msgid "Journal"
+msgstr "Dnevnik"
+
+#. module: account_bank_statement_import_camt
+#: code:addons/account_bank_statement_import_camt/tests/test_account_bank_statement_import_camt.py:206
+#: code:addons/account_bank_statement_import_camt/wizard/account_bank_statement_import_camt.py:260
+#, python-format
+msgid ""
+"Please set the IBAN account on your bank journal.\n"
+"\n"
+"This CAMT file is targeting several IBAN accounts but none match the current journal."
+msgstr ""
+"Molimo postavite IBAN bankovnog računa na dnevnik banke.\n"
+"\n"
+"Ova CAMT datoteka odnosi se na nekoliko IBAN računa ali niti jedan nije povezan sa trenutnim dnevnikom."
+
+#. module: account_bank_statement_import_camt
+#: model_terms:ir.ui.view,arch_db:account_bank_statement_import_camt.account_bank_statement_import_camt
+msgid "SEPA recommanded Cash Management format (CAMT.053)"
+msgstr "SEPA preporučeni format (CAMT.053)"

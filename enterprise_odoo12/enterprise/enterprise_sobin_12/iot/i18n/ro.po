@@ -1,0 +1,662 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * iot
+# 
+# Translators:
+# Cozmin Candea <office@terrabit.ro>, 2018
+# Dorin Hongu <dhongu@gmail.com>, 2019
+# Martin Trigaux, 2019
+# Hongu Cosmin <cosmin513@gmail.com>, 2020
+# Foldi Robert <foldirobert@nexterp.ro>, 2021
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-14 07:50+0000\n"
+"PO-Revision-Date: 2018-08-24 09:20+0000\n"
+"Last-Translator: Foldi Robert <foldirobert@nexterp.ro>, 2021\n"
+"Language-Team: Romanian (https://www.transifex.com/odoo/teams/41243/ro/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+
+#. module: iot
+#: model_terms:ir.ui.view,arch_db:iot.view_add_iot_box
+msgid ""
+"0. Power on the IoT Box<br/><br/>\n"
+"\n"
+"                            <strong>A. Ethernet Connection</strong><br/>\n"
+"                            1. Click on the \"Scan\" button below<br/><br/>\n"
+"\n"
+"                            <strong>B. WiFi Connection (or Ethernet Connection doesn't work)</strong><br/>\n"
+"                            1. Make sure no ethernet cable is connected to the IoT Box<br/>\n"
+"                            2. Copy the token that is below<br/>\n"
+"                            3. Connect to the IoT Box WiFi network (you should see it in your available WiFi networks)<br/>\n"
+"                            4. You will be redirected to the IoT Box Homepage<br/>\n"
+"                            5. Paste the token in token field and follow the steps described on the IoT Box Homepage<br/>"
+msgstr ""
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:659
+#, python-format
+msgid ""
+"1. To upgrade the IoT and Manufacturing modules, go in Apps, search for the "
+"App and click on Upgrade"
+msgstr ""
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:660
+#, python-format
+msgid ""
+"2. To update the image, go on the IoT Box's homepage and click on Update "
+"(you may also need to reload the drivers)"
+msgstr ""
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_iot_trigger__action
+msgid "Action"
+msgstr "Acțiune"
+
+#. module: iot
+#: model:ir.model,name:iot.model_add_iot_box
+msgid "Add IoT Box wizard"
+msgstr "Adăugați expertul IoT Box"
+
+#. module: iot
+#: code:addons/iot/drivers/SerialBaseDriver.py:111
+#, python-format
+msgid "An error occured while performing action %s on %s"
+msgstr ""
+
+#. module: iot
+#: selection:iot.device,connection:0
+msgid "Bluetooth"
+msgstr "Bluetooth"
+
+#. module: iot
+#: selection:iot.device,type:0
+msgid "Camera"
+msgstr "Aparat Foto"
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Cancel"
+msgstr "Anulează"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:523
+#, python-format
+msgid "Click here to open your IoT Homepage"
+msgstr "Faceți clic aici pentru a vă deschide pagina de pornire IoT"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:525
+#, python-format
+msgid "Click on Advanced/Show Details/Details/More information"
+msgstr ""
+"Faceți clic pe Avansat / Afișați detalii / Detalii / Mai multe informații"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:526
+#, python-format
+msgid ""
+"Click on Proceed to .../Add Exception/Visit this website/Go on to the "
+"webpage"
+msgstr ""
+"Faceți clic pe Continuați cu ... / Adăugați o excepție / Vizitați acest site"
+" web / Accesați pagina web"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot_tour.js:13
+#, python-format
+msgid "Click on iot App."
+msgstr ""
+
+#. module: iot
+#: model_terms:ir.actions.act_window,help:iot.iot_box_action
+msgid "Click on the"
+msgstr "Faceți clic pe"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:138
+#: code:addons/iot/static/src/js/iot.js:535
+#: code:addons/iot/static/src/js/iot.js:669
+#, python-format
+msgid "Close"
+msgstr "Închide"
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Close MO"
+msgstr "Închideți MO"
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Close WO"
+msgstr "Închideți MO"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:528
+#, python-format
+msgid "Close this window and try again"
+msgstr "Închideți această fereastră și încercați din nou"
+
+#. module: iot
+#: model:ir.actions.act_window,name:iot.action_add_iot_box
+#: model_terms:ir.ui.view,arch_db:iot.view_add_iot_box
+msgid "Connect an IoT Box"
+msgstr "Conectați o casetă IoT"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_iot_device__connection
+msgid "Connection"
+msgstr "Conexiune"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:303
+#, python-format
+msgid "Connection failed"
+msgstr ""
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:53
+#, python-format
+msgid "Connection to IoT Box failed"
+msgstr "Conectarea la caseta IoT a eșuat"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:46
+#, python-format
+msgid "Connection to Printer failed"
+msgstr ""
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:531
+#, python-format
+msgid "Connection to device failed"
+msgstr "Conexiunea la dispozitiv a eșuat"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot_tour.js:23
+#, python-format
+msgid "Copy token to the clipboard."
+msgstr ""
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_add_iot_box__create_uid
+#: model:ir.model.fields,field_description:iot.field_iot_box__create_uid
+#: model:ir.model.fields,field_description:iot.field_iot_device__create_uid
+#: model:ir.model.fields,field_description:iot.field_iot_trigger__create_uid
+msgid "Created by"
+msgstr "Creat de"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_add_iot_box__create_date
+#: model:ir.model.fields,field_description:iot.field_iot_box__create_date
+#: model:ir.model.fields,field_description:iot.field_iot_device__create_date
+#: model:ir.model.fields,field_description:iot.field_iot_trigger__create_date
+msgid "Created on"
+msgstr "Creat în"
+
+#. module: iot
+#: model_terms:ir.ui.view,arch_db:iot.view_add_iot_box
+msgid "Detect and Add IoT devices in the network"
+msgstr ""
+
+#. module: iot
+#: selection:iot.device,type:0
+#: model:ir.model.fields,field_description:iot.field_iot_trigger__device_id
+msgid "Device"
+msgstr "Dispozitiv"
+
+#. module: iot
+#: model_terms:ir.ui.view,arch_db:iot.iot_device_search
+msgid "Device type"
+msgstr "Tip Dispozitiv"
+
+#. module: iot
+#: model:ir.actions.act_window,name:iot.iot_device_action
+#: model:ir.model.fields,field_description:iot.field_iot_box__device_ids
+#: model:ir.ui.menu,name:iot.iot_device_menu_action
+#: model_terms:ir.ui.view,arch_db:iot.iot_box_view_form
+msgid "Devices"
+msgstr "Dispozitive"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_add_iot_box__display_name
+#: model:ir.model.fields,field_description:iot.field_iot_box__display_name
+#: model:ir.model.fields,field_description:iot.field_iot_device__display_name
+#: model:ir.model.fields,field_description:iot.field_iot_trigger__display_name
+msgid "Display Name"
+msgstr "Nume afișat"
+
+#. module: iot
+#: code:addons/iot/drivers/SerialBaseDriver.py:141
+#, python-format
+msgid "Error while reading %s"
+msgstr ""
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Fail"
+msgstr "Eșuat "
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Finish"
+msgstr "Finalizare"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:527
+#, python-format
+msgid "Firefox only : Click on Confirm Security Exception"
+msgstr "Doar Firefox: faceți clic pe Confirmare excepție de securitate"
+
+#. module: iot
+#: model_terms:ir.ui.view,arch_db:iot.view_add_iot_box
+msgid "Found IoT Box(s)"
+msgstr ""
+
+#. module: iot
+#: model_terms:ir.ui.view,arch_db:iot.iot_device_search
+msgid "Group By"
+msgstr "Grupează după"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:662
+#, python-format
+msgid "Have a great day!"
+msgstr ""
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_add_iot_box__id
+#: model:ir.model.fields,field_description:iot.field_iot_box__id
+#: model:ir.model.fields,field_description:iot.field_iot_device__id
+#: model:ir.model.fields,field_description:iot.field_iot_trigger__id
+msgid "ID"
+msgstr "ID"
+
+#. module: iot
+#: model:ir.model,name:iot.model_iot_device
+msgid "IOT Device"
+msgstr "Dispozitiv IOT"
+
+#. module: iot
+#: model:ir.model,name:iot.model_iot_trigger
+msgid "IOT Trigger"
+msgstr "Declanşare IOT"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_iot_box__ip
+msgid "IP Address"
+msgstr "Adresă IP"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_iot_device__identifier
+msgid "Identifier"
+msgstr "Identificator"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_iot_box__identifier
+msgid "Identifier (Mac Address)"
+msgstr "Identificator (adresa Mac)"
+
+#. module: iot
+#: model:ir.ui.menu,name:iot.iot_menu_root
+msgid "IoT"
+msgstr "IoT"
+
+#. module: iot
+#: model:ir.model,name:iot.model_iot_box
+#: model:ir.model.fields,field_description:iot.field_iot_device__iot_id
+#: model_terms:ir.ui.view,arch_db:iot.iot_device_search
+msgid "IoT Box"
+msgstr "IoT Box"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_iot_box__ip_url
+msgid "IoT Box Home Page"
+msgstr "Pagina principală IoT Box"
+
+#. module: iot
+#: model:ir.actions.act_window,name:iot.iot_box_action
+#: model:ir.ui.menu,name:iot.iot_box_menu_action
+msgid "IoT Boxes"
+msgstr "Cutii IoT"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_ir_actions_report__device_id
+#: model_terms:ir.ui.view,arch_db:iot.iot_device_search
+msgid "IoT Device"
+msgstr "Dispozitiv IoT"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:297
+#, python-format
+msgid "IoTBox connected"
+msgstr ""
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_iot_trigger__key
+msgid "Key"
+msgstr "Cheie"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_add_iot_box____last_update
+#: model:ir.model.fields,field_description:iot.field_iot_box____last_update
+#: model:ir.model.fields,field_description:iot.field_iot_device____last_update
+#: model:ir.model.fields,field_description:iot.field_iot_trigger____last_update
+msgid "Last Modified on"
+msgstr "Ultima modificare la"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_add_iot_box__write_uid
+#: model:ir.model.fields,field_description:iot.field_iot_box__write_uid
+#: model:ir.model.fields,field_description:iot.field_iot_device__write_uid
+#: model:ir.model.fields,field_description:iot.field_iot_trigger__write_uid
+msgid "Last Updated by"
+msgstr "Ultima actualizare făcută de"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_add_iot_box__write_date
+#: model:ir.model.fields,field_description:iot.field_iot_box__write_date
+#: model:ir.model.fields,field_description:iot.field_iot_device__write_date
+#: model:ir.model.fields,field_description:iot.field_iot_trigger__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualizare pe"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_iot_box__name
+#: model:ir.model.fields,field_description:iot.field_iot_device__name
+msgid "Name"
+msgstr "Nume"
+
+#. module: iot
+#: selection:iot.device,connection:0
+msgid "Network"
+msgstr "Rețea"
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Next"
+msgstr "Înainte"
+
+#. module: iot
+#: model_terms:ir.actions.act_window,help:iot.iot_box_action
+msgid "No IoT Box found !"
+msgstr "Nu s-a găsit nicio casetă IoT!"
+
+#. module: iot
+#: model_terms:ir.ui.view,arch_db:iot.view_add_iot_box
+msgid "OK"
+msgstr "OK"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot_tour.js:18
+#, python-format
+msgid "Open wizard to scan range."
+msgstr ""
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Pack"
+msgstr "Pachet"
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Pass"
+msgstr "Pass"
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Pause"
+msgstr "Pauză"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:524
+#, python-format
+msgid ""
+"Please accept the certificate of your IoT Box (procedure depends on your "
+"browser) :"
+msgstr ""
+"Vă rugăm să acceptați certificatul IoT Box (procedura depinde de browserul "
+"dvs.):"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:51
+#, python-format
+msgid "Please check if the IoT Box is still connected."
+msgstr "Vă rugăm să verificați dacă IoT Box este încă conectat."
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:46
+#, python-format
+msgid "Please check if the printer is still connected."
+msgstr "Verificați dacă imprimanta este încă conectată."
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Previous"
+msgstr "Anterior"
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Print Delivery Slip"
+msgstr "Tipărire livrare"
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Print Labels"
+msgstr "Printare Etichete"
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Print Operation"
+msgstr "Tipărire Operație"
+
+#. module: iot
+#: selection:iot.device,type:0
+msgid "Printer"
+msgstr "Imprimantă"
+
+#. module: iot
+#: model_terms:ir.ui.view,arch_db:iot.iot_device_view_form
+msgid "Printer Reports"
+msgstr "Rapoarte de imprimantă"
+
+#. module: iot
+#: model:ir.model,name:iot.model_publisher_warranty_contract
+msgid "Publisher Warranty Contract For IoT Box"
+msgstr "Contract de garanție a editorului pentru caseta IoT"
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Record Production"
+msgstr "Înregistrare producție"
+
+#. module: iot
+#: model:ir.model,name:iot.model_ir_actions_report
+msgid "Report Action"
+msgstr "Raportați acțiunea"
+
+#. module: iot
+#: model_terms:ir.ui.view,arch_db:iot.act_report_xml_view_tree_iot
+msgid "Report xml"
+msgstr "Raport xml"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_iot_device__report_ids
+msgid "Reports"
+msgstr "Rapoarte"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:76
+#, python-format
+msgid "SCAN"
+msgstr ""
+
+#. module: iot
+#: model_terms:ir.ui.view,arch_db:iot.view_add_iot_box
+msgid "Scanning range(s)"
+msgstr ""
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Scrap"
+msgstr "Rebut"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_iot_box__screen_url
+msgid "Screen URL"
+msgstr "Adresa URL a ecranului"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_iot_trigger__sequence
+msgid "Sequence"
+msgstr "Secvență"
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Skip"
+msgstr "Omite"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:658
+#, python-format
+msgid ""
+"Some improvements have been made on the IoT App that require some manual "
+"actions from your side:"
+msgstr ""
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:44
+#, python-format
+msgid "Successfully sent to printer!"
+msgstr "Trimis la imprimantă cu succes!"
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Take Measure"
+msgstr ""
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Take Picture"
+msgstr "Faceți o fotografie"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:643
+#, python-format
+msgid "Thank you for your understanding."
+msgstr ""
+
+#. module: iot
+#: model_terms:ir.actions.act_window,help:iot.iot_device_action
+msgid "There is no device connected to your IoT Boxes"
+msgstr "Nu există niciun dispozitiv conectat la casetele dvs. IoT"
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:299
+#, python-format
+msgid "This IoTBox has already connected"
+msgstr ""
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_add_iot_box__token
+msgid "Token"
+msgstr "Jeton"
+
+#. module: iot
+#: model:ir.model.fields,field_description:iot.field_iot_device__type
+msgid "Type"
+msgstr "Tip"
+
+#. module: iot
+#: model:ir.model.fields,help:iot.field_iot_device__connection
+msgid "Type of connection."
+msgstr "Tipul de conexiune"
+
+#. module: iot
+#: model:ir.model.fields,help:iot.field_iot_device__type
+msgid "Type of device."
+msgstr "Tipul de dizpozitiv"
+
+#. module: iot
+#: selection:iot.device,connection:0
+msgid "USB"
+msgstr "USB"
+
+#. module: iot
+#: code:addons/iot/drivers/KeyboardUSBDriver.py:116
+#, python-format
+msgid "Unknow keyboard or scanner"
+msgstr ""
+
+#. module: iot
+#. openerp-web
+#: code:addons/iot/static/src/js/iot.js:647
+#, python-format
+msgid "Update IoT App."
+msgstr ""
+
+#. module: iot
+#: model:ir.model.fields,help:iot.field_iot_box__screen_url
+msgid "Url of the page that will be displayed by hdmi port of the box."
+msgstr "Adresa URL a paginii care va fi afișată de portul HDMI al casetei."
+
+#. module: iot
+#: selection:iot.trigger,action:0
+msgid "Validate"
+msgstr "Validează"
+
+#. module: iot
+#: model_terms:ir.ui.view,arch_db:iot.iot_device_view_form
+msgid "Value"
+msgstr "Valoare"
+
+#. module: iot
+#: model:ir.model.fields,help:iot.field_ir_actions_report__device_id
+msgid ""
+"When setting a device here, the report will be printed through this device "
+"on the IoT Box"
+msgstr ""
+"Când setați un dispozitiv aici, raportul va fi tipărit prin intermediul "
+"acestui dispozitiv în caseta IoT"
+
+#. module: iot
+#: model_terms:ir.actions.act_window,help:iot.iot_box_action
+msgid "connect"
+msgstr "Conectare"
+
+#. module: iot
+#: model_terms:ir.actions.act_window,help:iot.iot_box_action
+msgid "to add an IoT Box."
+msgstr ""

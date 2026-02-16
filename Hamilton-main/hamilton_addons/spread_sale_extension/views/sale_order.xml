@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+
+
+        <record id="product_template_form_price_category" model="ir.ui.view">
+            <field name="name">product.template.product.form.price.category</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view" />
+            <field name="arch" type="xml">
+                <field name="list_price" position="after">
+                    <field name="msrp"/>
+                </field>
+            </field>
+        </record>
+
+
+        <!-- Inherit sale order Form View -->
+        <record id="inherit_sale_order_form_view" model="ir.ui.view">
+            <field name="name">sale.order.form.view</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']"
+                       position="before">
+                    <h3 style="background-color:yellow"><p>Please check Price Category and Delivery Location before confirming Sales Order.</p></h3>
+                </xpath>
+                <xpath expr="//field[@name='payment_term_id']"
+                       position="after">
+                    <field name="local_export" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                    <field name="price_category_id" widget="selection" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                </xpath>
+                <xpath expr="//field[@name='note']" position="before">
+                    <group
+                            attrs="{'invisible': [('local_export', '!=', 'export')]}">
+                        <group>
+                            <field name="no_of_box"/>
+                            <field name="country_origin"/>
+                            <field name="hs_code"/>
+                            <field name="net_weight"/>
+                            <field name="gross_weight"/>
+                            <field name="total_cbm"/>
+                        </group>
+                    </group>
+                </xpath>
+                <xpath
+                        expr="//field[@name='order_line']/tree//field[@name='name']" position="after">
+                    <field name="hs_code" readonly="1"/>
+                    <field name="country_origin_id" readonly="1"/>
+                    <field name="stock_available"/>
+                </xpath>
+                <xpath
+                        expr="//field[@name='order_line']/tree//field[@name='product_id']" position="attributes">
+                    <attribute
+                            name="context">{'is_show_data': True,'partner_id':
+                        parent.partner_id,'quantity': product_uom_qty, 'pricelist': parent.pricelist_id, 'uom':product_uom,'company_id': parent.company_id,'default_lst_price': price_unit,'default_description_sale': name}</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_sale_inherit_sale_margin_form" model="ir.ui.view">
+            <field name="name">view.inherit.sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale_margin.sale_margin_sale_order_line_form"/>
+            <field name="arch" type="xml">
+                <xpath
+                        expr="//field[@name='order_line']/tree//field[@name='purchase_price']" position="attributes">
+                    <attribute name="readonly">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <!--inherit credit limit view to add group on lock button-->
+        <record id="view_sale_inherit_lock_form" model="ir.ui.view">
+            <field name="name">view.inherit.lock.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="customer_credit_limit.view_order_form_for_credit_inherit"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_done']" position="attributes">
+                    <attribute name='groups'>sales_team.group_sale_manager</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_sale_inherit_delivery_form" model="ir.ui.view">
+            <field name="name">view.inherit.lock.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="delivery.view_order_form_with_carrier"/>
+            <field name="arch" type="xml">
+                <xpath
+                        expr="//label[@for='carrier_id']" position='replace'>
+                </xpath>
+                <xpath expr="//div[@name='carrier_selection']" position='replace'>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_quotation_tree_inherit" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_quotation_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="client_order_ref"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_order_tree_inherit_" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="client_order_ref"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_sale_order_line_tree2" model="ir.ui.view">
+            <field name="name">sale.order.line.tree2</field>
+            <field name="model">sale.order.line</field>
+            <field name="arch" type="xml">
+                <tree string="Sales Order Lines" create="false" edit="false" delete="false">
+                    <field name="order_id"/>
+                    <field name="order_partner_id"/>
+                    <field name="product_id"/>
+                    <field name="name" invisible="1"/>
+                    <field name="salesman_id"/>
+                    <field name="product_uom_qty" string="Qty"/>
+                    <field name="qty_delivered"/>
+                    <field name="qty_invoiced"/>
+                    <field name="qty_to_invoice"/>
+                    <field name="product_uom" string="Unit of Measure"/>
+                    <field name="price_subtotal" sum="Total" widget="monetary"/>
+                    <field name="invoice_status"/>
+                    <field name="state" invisible="0"/>
+                    <field name="company_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_order_line_form" model="ir.ui.view">
+            <field name="name">sale.order.line.form</field>
+            <field name="model">sale.order.line</field>
+            <field name="arch" type="xml">
+                <form string="Sales Order Lines" create="false" edit="false" delete="false">
+                    <sheet>
+                        <group string="Sale Order Line Description">
+                            <group>
+                                <field name="product_id"/>
+                                <field name="name"/>
+                                <field name="order_id"/>
+                                <field name="order_partner_id"/>
+                                <field name="salesman_id"/>
+                            </group>
+                            <group>
+                                <field name="product_uom_qty" string="Qty"/><field name="product_uom" string="Unit of Measure"/>
+                                <field name="qty_delivered"/>
+                                <field name="qty_invoiced"/>
+                                <field name="qty_to_invoice"/>
+                                <field name="price_subtotal" sum="Total" widget="monetary"/>
+                                <field name="state"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_sales_order_line_filter_inherit" model="ir.ui.view">
+            <field name="name">sale.order.line.select.inherit</field>
+            <field name="model">sale.order.line</field>
+            <field name="arch" type="xml">
+                <search string="Search Sales Order">
+                    <filter name='qty_to_invoice' string="To Invoice"
+                            domain="[('qty_to_invoice','&lt;&gt;', 0)]"  help="Sales Order Lines ready to be invoiced"/>
+                    <separator/>
+                    <filter name='salesman_id' string="My Sales Order Lines"
+                            domain="[('salesman_id','=',uid)]" help="Sales Order Lines related to a Sales Order of mine"/>
+                    <separator/>
+                    <separator/>
+                    <field name="order_id"/>
+                    <field name="order_partner_id" operator="child_of"/>
+                    <field name="product_id"/>
+                    <field name="salesman_id"/>
+                    <group expand="0" string="Group By">
+                        <filter name="product_id" string="Product" domain="[]"
+                                context="{'group_by':'product_id'}"/>
+                        <filter name="order_id" string="Order" domain="[]"
+                                context="{'group_by':'order_id'}"/>
+                        <filter name="salesman_id" string="Salesperson" domain="[]"
+                                context="{'group_by':'salesman_id'}"/>
+                        <filter name="company_id" string="Company"
+                                domain="[]" context="{'group_by':'company_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="sale_order_line_action_id" model="ir.actions.act_window">
+            <field name="name">Sale Oder Line</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order.line</field>
+            <field name="view_type">form</field>
+            <field name="search_view_id" ref="view_sales_order_line_filter_inherit"/>
+            <field name="view_id" ref="view_order_line_form"/>
+            <field name="view_mode">form,tree</field>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_sale_order_line_id">
+            <field name="sequence" eval="0"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_sale_order_line_tree2"/>
+            <field name="act_window_id" ref="sale_order_line_action_id"/>
+        </record>
+
+        <menuitem id="sale_order_line_menu_id" name="Sale Order Lines" parent="sale.sale_order_menu" action="sale_order_line_action_id" sequence="12"/>
+         <record id="price_category_tree_view" model="ir.ui.view">
+            <field name="name">price.category.tree.view</field>
+            <field name="model">price.category</field>
+            <field name="arch" type="xml">
+                <tree string="Price Category" create="true" edit="true" delete="false">
+                    <field name="name"/>
+                    <field name="percentage"/>
+                </tree>
+            </field>
+        </record>
+          <record id="price_category_form_view" model="ir.ui.view">
+            <field name="name">price_category_form_view</field>
+            <field name="model">price.category</field>
+            <field name="arch" type="xml">
+                <form string="Price Category">
+                    <sheet>
+                        <group >
+                            <group>
+
+                                <field name="name" required="1"/>
+                                <field name="percentage" required="1"/>
+                           </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <record id="action_price_category" model="ir.actions.act_window">
+            <field name="name">Price category</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">price.category</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="price_category_tree_view"/>
+            <field name="view_mode">tree,form</field>
+        </record>
+         <menuitem id="menu_price_category" name="Price Category" parent="sale.menu_sale_config" action="action_price_category" sequence="2"/>
+    </data>
+</odoo>

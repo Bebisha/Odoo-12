@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="delivery_note_report_internal_layout">
+            <t t-if="o and 'company_id' in o">
+                <t t-set="company" t-value="o.company_id"/>
+            </t>
+            <t t-if="not o or not 'company_id' in o">
+                <t t-set="company" t-value="res_company"/>
+            </t>
+            <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id">
+                <t t-raw="0"/>
+            </div>
+            <div class="footer">
+                <div class="row">
+                    <div class="col-12">
+                        <b>goods once sold will not be taken back subject to U.A.E Law &amp; Regulations.</b>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="delivery_note_report">
+            <t t-call="spreadt_delivery_note_report.delivery_note_report_internal_layout">
+                <t t-set="o"
+                   t-value="o.with_context({'lang':o.partner_id.lang})"/>
+                <br/>
+                <div class="page">
+                    <br/>
+                    <br/>
+                    <h5 class="text-right">
+                        <span>
+                            <strong>TRN :</strong>
+                        </span>
+                        <span t-field="o.company_id.vat"/>
+                    </h5>
+                    <h3 class="text-center" style="border: 1px solid black;">
+                        <span>
+                            <strong>DELIVERY NOTE</strong>
+                        </span>
+                    </h3>
+                    <style type="text/css">
+                            .top-border{
+                                border-top: 1px solid black;
+                            }
+                            .top-left{
+                                border-left: 1px solid black;
+                            }
+                            .top-bottom{
+                                border-bottom: 1px solid black;
+                            }
+                            .top-right{
+                                border-right: 1px solid black;
+                            }
+                        table tr td {
+                            padding: 2px 10px 2px;
+                        }
+                        </style>
+                    <table name="customer_details" width="100%">
+                        <tr class="top-border top-left top-right">
+                            <td class="top-border" colspan="4">
+                                <b><i>Customer Details :</i></b>
+                            </td>
+                            <td class="top-border top-left">
+                                <b>No :</b>
+                            </td>
+                            <td class="top-border">
+                                <b><t t-esc="o.name"/></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="top-left top-right" colspan="4">
+                                <b><t t-esc="o.partner_id.name"/></b>
+                            </td>
+                            <td>
+                                <b>Date :</b>
+                            </td>
+                            <td class="top-right">
+                                <b><t t-esc="o.scheduled_date"/></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="top-left top-right" colspan="4"></td>
+                            <td>
+                                <b>Customer's Order Ref :</b>
+                            </td>
+                            <td class="top-right">
+                                <b><t t-esc="o.origin"/></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="top-left">
+                                <b>P.O. Box :</b>
+                            </td>
+                            <td class="text-left">
+                                <t t-esc="o.partner_id.zip"/>
+                            </td>
+                            <td>
+                                <b>City :</b>
+                            </td>
+                            <td class="top-right text-left">
+                                <t t-esc="o.partner_id.city"/>
+                            </td>
+                            <td>
+                                <b>Truck No:</b>
+                            </td>
+                            <td class="top-right">
+                                <b></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="top-left top-bottom">
+                                <b>Tel. :</b>
+                            </td>
+                            <td class="top-bottom text-left">
+                                <t t-esc="o.partner_id.phone"/>
+                            </td>
+                            <td class="top-bottom text-left">
+                                <b>Fax :</b>
+                            </td>
+                            <td class="top-right top-bottom">
+                                <t t-esc="o.partner_id.mobile"/>
+                            </td>
+                            <td class="top-bottom">
+                                <b>Delivery At</b>
+                            </td>
+                            <td class="top-right top-bottom">
+                                <b><t t-esc="o.partner_id.country_id.name"/></b>
+                            </td>
+                        </tr>
+                    </table>
+                    <span style="margin-top: 10px;">Please
+                        receive The goods mentioned in order / good
+                        condition and acknowledge receipt of the same.</span>
+                    <br/>
+                    <table class="table table-sm"
+                           style="border-collapse: collapse; margin-top: 20px;"
+                           width="100%"
+                           name="invoice_line_table">
+                        <t t-set="total_qty" t-value="0"/>
+                        <thead>
+                            <tr>
+                                <th style="border: 1px solid black;"
+                                    width="30%"
+                                    class="text-center">DESCRIPTION
+                                </th>
+                                <th width="17%"
+                                    style="border: 1px solid black;"
+                                    class="text-center">DIAMETER(MM)
+                                </th>
+                                <th style="border: 1px solid black;"
+                                    width="17%"
+                                    class="text-center">LENGTH(M)
+                                </th>
+                                <th style="border: 1px solid black;"
+                                    width="17%"
+                                    class="text-center">NO. OF PIECES Per Bundle/Ton
+                                </th>
+                                <th style="border: 1px solid black;"
+                                    width="17%"
+                                    class="text-center">QUANTITY Coil/Bundel/MT
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr t-foreach="o.move_lines" t-as="l">
+                                <td style="border: 1px solid black;" width="30%">
+                                    <span t-field="l.name"/>
+                                </td>
+                                <td style="border: 1px solid black;"
+                                    width="17%"
+                                    class="text-right">
+                                    <t t-if="l.product_id">
+                                        <t t-if="l.product_id.attribute_value_ids">
+                                            <t t-esc="l.product_id.attribute_value_ids[0].name"/>
+                                        </t>
+                                    </t>
+                                </td>
+                                <td style="border: 1px solid black;"
+                                    width="17%"
+                                    class="text-right">
+                                    <t t-if="l.product_id">
+                                        <t t-if="len(l.product_id.attribute_value_ids) > 1">
+                                            <t t-esc="l.product_id.attribute_value_ids[1].name"/>
+                                        </t>
+                                    </t>
+                                </td>
+                                <td style="border: 1px solid black;"
+                                    width="17%"
+                                    class="text-right">
+                                </td>
+                                <td style="border: 1px solid black;"
+                                    width="17%"
+                                    class="text-right">
+                                    <span t-field="l.product_uom_qty"/>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    <table>
+                        <tr>
+                            <td class="top-border top-left top-right"
+                                width="40%">
+                                <b>Received the above material at our site in
+                                good condition.</b>
+                            </td>
+                            <td class="top-border text-center">
+                                <b>Driver's Name &amp; Signature</b>
+                            </td>
+                            <td class="top-border top-left top-right" width="40%">
+                                <t t-if="o and 'company_id' in o">
+                                    <t t-set="company" t-value="o.company_id"/>
+                                </t>
+                                <t t-if="not o or not 'company_id' in o">
+                                    <t t-set="company" t-value="res_company"/>
+                                </t>
+                                <b>For <span t-esc="company.name"/></b>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="top-left top-right" height="100px;">
+                            </td>
+                            <td height="100px;">
+                            </td>
+                            <td class="top-left top-right" height="100px;">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="top-bottom top-left top-right">
+                                <b>Receiver's Signature &amp; Stamp</b>
+                            </td>
+                            <td class="top-bottom">
+
+                            </td>
+                            <td class="top-bottom top-left top-right">
+
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </template>
+
+        <template id="report_delivery_note">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="spreadt_delivery_note_report.delivery_note_report"
+                       t-lang="o.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

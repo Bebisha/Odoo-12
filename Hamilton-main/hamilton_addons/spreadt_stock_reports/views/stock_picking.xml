@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="stock.stock_picking_type_action"
+            model="ir.actions.act_window">
+        <field name="context">{"search_default_groupby_code":1}</field>
+    </record>
+
+    <record id="stock_production_type_kanban_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.type.kanban</field>
+        <field name="model">stock.picking.type</field>
+        <field name="inherit_id" ref="stock.stock_picking_type_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr='//field[@name="name"]' position="replace">
+                <span t-if="record.code.raw_value =='incoming'">Receiving
+                </span>
+                <t t-if="record.code.raw_value !='incoming'">
+                    <field name="name"/>
+                </t>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

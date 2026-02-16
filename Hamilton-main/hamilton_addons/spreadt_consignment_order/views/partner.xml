@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_res_partner_inherit_reseller" model="ir.ui.view">
+            <field name="name">view.res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath
+                        expr="//page[@name='sales_purchases']/group[@name='container_row_2']/group/field[@name='customer']"
+                       position="after">
+                    <field name="is_reseller"
+                           attrs="{'invisible': [('customer', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_res_partner_inherit_operation" model="ir.ui.view">
+            <field name="name">view.res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="stock.view_partner_stock_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='warehouse']/field[@name='property_stock_supplier']"
+                       position="after">
+                    <field name="operation_type_id"
+                           domain="[('code','=','internal')]"
+                           attrs="{'invisible': [('customer', '=', False)],'required': [('is_reseller', '=', True)]}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_sale_order_inherit_consignee" model="ir.ui.view">
+            <field name="name">view.sale.order.form.consignee</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='partner_shipping_id']"
+                       position="after">
+                    <field name="display_consignee_location" invisible="1"/>
+                    <field name="consignee_location" attrs="{'invisible': [('display_consignee_location', '=', False)],
+                           'readonly': [('state', '!=', 'draft')]}"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</odoo>

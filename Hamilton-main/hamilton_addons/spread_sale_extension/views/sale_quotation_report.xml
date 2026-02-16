@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document_enhance"
+              inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@id='informations']" position="replace">
+            <div class="row mt32 mb32" id="informations">
+
+                <div t-if="doc.confirmation_date and doc.state not in ['draft','sent']" class="col-3">
+                    <strong>Date Ordered:</strong>
+                    <p t-field="doc.confirmation_date"/>
+                </div>
+                <div t-if="doc.date_order and doc.state in ['draft','sent']" class="col-3">
+                    <strong>Quotation Date:</strong>
+                    <p t-field="doc.date_order"/>
+                </div>
+                <div t-if="doc.user_id.name" class="col-3">
+                    <strong>Salesperson:</strong>
+                    <p t-field="doc.user_id"/>
+                </div>
+                <div name="payment_term" t-if="doc.payment_term_id" class="col-3">
+                    <strong>Payment Terms:</strong>
+                    <p t-field="doc.payment_term_id"/>
+                </div>
+                <div t-if="doc.validity_date and doc.state in ['draft', 'sent']" class="col-3">
+                    <strong>Expiration Date:</strong>
+                    <p t-field="doc.validity_date"/>
+                </div>
+                <div t-if="doc.client_order_ref" class="col-3">
+                    <strong>PO: </strong><span t-field="doc.client_order_ref"/>
+                    <p><strong>Shipping: </strong></p>
+                </div>
+            </div>
+        </xpath>
+
+        <xpath expr="//table[1]" position="before">
+            <t t-set="total_qty" t-value="0"/>
+        </xpath>
+        <xpath expr="//table[1]/thead/tr/th[3]" position="replace"/>
+        <xpath expr="//tbody[@class='sale_tbody']/t/tr/t/td[3]"
+               position="replace"/>
+
+        <xpath expr="//table[1]/thead/tr/th[1]" position="before">
+            <th>Product Code</th>
+        </xpath>
+        <xpath expr="//tbody[@class='sale_tbody']/t/tr/t/td[1]"
+               position="before">
+            <td><span t-field="line.product_id.default_code"/></td>
+        </xpath>
+
+        <xpath expr="//table[1]/thead/tr/th[2]" position="after">
+            <th class="text-right">Sell</th>
+        </xpath>
+
+        <xpath expr="//tbody[@class='sale_tbody']/t/tr/t/td[2]"
+               position="after">
+            <td class="text-right">
+                <span t-field="line.price_unit"/>
+            </td>
+            <t t-set="total_qty"
+               t-value="total_qty + line.product_uom_qty"/>
+        </xpath>
+
+        <!-- total qty -->
+        <xpath expr="//tbody[@class='sale_tbody']" position="inside">
+            <tr>
+                <td class="text-right" colspan="3"
+                    ><b>Total Quantity</b></td>
+                <td colspan="2" class="text-center"><span
+                        t-esc="'%.2f'% total_qty"/></td>
+                <td/><td/>
+            </tr>
+        </xpath>
+        <xpath expr="//p[@t-if='doc.payment_term_id.note']" position="replace">
+        </xpath>
+        <xpath expr="//p[@t-if='doc.partner_id.vat']" position="replace">
+            <p t-if="doc.partner_id.vat"><t
+                    t-esc="'TRN'"/>:
+                <span t-field="doc.partner_id.vat"/></p>
+        </xpath>
+
+    </template>
+
+    <template id="report_external_layout_background"
+              inherit_id="web.external_layout_background">
+        <xpath expr="//li[@t-if='company.vat']" position="replace">
+        </xpath>
+    </template>
+    <template id="report_external_layout_boxed"
+              inherit_id="web.external_layout_boxed">
+        <xpath expr="//li[@t-if='company.vat']" position="replace">
+        </xpath>
+    </template>
+    <template id="report_external_layout_clean"
+              inherit_id="web.external_layout_clean">
+        <xpath expr="//li[@t-if='company.vat']" position="replace">
+        </xpath>
+    </template>
+    <template id="report_external_layout_standard"
+              inherit_id="web.external_layout_standard">
+        <xpath expr="//li[@t-if='company.vat']" position="replace">
+        </xpath>
+    </template>
+
+    <!-- add trn number on header -->
+    <template id="report_external_layout_trn_header"
+              inherit_id="web.external_layout_background">
+        <xpath
+                expr="//div[@class='header']/div[@class='o_background_header']/div[@class='float-left company_address']/span"
+               position="replace">
+            <span t-field="company.partner_id"
+                    t-options='{"widget": "contact", "fields": ["address"], "no_marker": true}'/>
+            <span>TRN: </span>
+            <span t-field="company.vat"/>
+        </xpath>
+    </template>
+
+    <template id="base.contact_name">
+        <div t-if="'name' in fields">
+            <t t-set='tmp' t-value="name.split(',')"/>
+                <t t-if=" len(tmp) > 1 ">
+                  <strong><span itemprop="name" t-esc="tmp[0]"/></strong>
+                  <div>
+                    <span itemprop="name" t-esc="tmp[1]"/>
+                  </div>
+
+                </t>
+                <t t-if="not len(tmp) > 1">
+                  <span itemprop="name" t-esc="name"/>
+                </t>
+            <t t-if="not object.name and object.parent_name">
+                <span itemprop="name" t-esc="object.parent_name"/>
+            </t>
+            <t t-if="options.get('country_image') and 'country_id' in fields and object.country_id and object.country_id.image">
+                <span t-field="object.country_id.image" t-options='{"widget": "image", "class": "country_flag"}'/>
+            </t>
+        </div>
+    </template>
+
+</odoo>

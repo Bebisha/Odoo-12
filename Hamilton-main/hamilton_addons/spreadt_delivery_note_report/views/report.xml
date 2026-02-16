@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <report id="delivery_note_report_act"
+                model="stock.picking"
+                string="Delivery Note"
+                report_type="qweb-pdf"
+                name="spreadt_delivery_note_report.report_delivery_note"
+                file="spreadt_delivery_note_report.delivery_note_report_tmpl"
+                attachment="(object.state in ('open','paid')) and ('INV'+(object.number or '').replace('/','')+'.pdf')"/>
+
+    </data>
+</odoo>

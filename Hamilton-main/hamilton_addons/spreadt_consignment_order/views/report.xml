@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            string="Consignment Operations"
+            id="action_report_consignment"
+            model="stock.picking"
+            report_type="qweb-pdf"
+            name="spreadt_consignment_order.report_consignment_template_main"
+            file="spreadt_consignment_order.consignment_report_tmpl"
+            print_report_name="'Consignment Operations - %s - %s' % (object.partner_id.name or '', object.name)"
+        />
+    </data>
+</odoo>

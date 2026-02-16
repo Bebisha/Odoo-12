@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="report_consignment_doc_header">
+            <div class="header o_background_header" style="font-size: 10pt;">
+                <div class="pull-right">
+                    <h3 class="mt0 text-right"
+                        t-esc="o.company_id.report_header"/>
+                </div>
+                <div class='row'>
+                    <div class='col-3'>
+                        <img t-if="o.company_id.logo"
+                             t-att-src="'data:image/png;base64,%s' % to_text(o.company_id.logo)"
+                             class="pull-left"/>
+                    </div>
+                    <div class='col-9'>
+                        <div>
+                            <span t-esc="o.company_id.partner_id.name"/>
+                        </div>
+                        <span t-field="o.company_id.partner_id"
+                              t-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;], &quot;no_marker&quot;: true}"/>
+                        TRN:
+                        <span t-field="o.company_id.vat"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article o_report_layout_background"
+                 t-att-data-oe-model="o and o._name"
+                 t-att-data-oe-id="o and o.id">
+                <t t-raw="0"/>
+            </div>
+
+            <div class="footer o_background_footer" style="font-size: 10pt;">
+                <div class="text-center">
+                    <ul class="list-inline">
+                        <li t-if="o.company_id.phone">
+                            <i class="fa fa-phone"/>
+                            <span t-field="o.company_id.phone"/>
+                        </li>
+                        <li t-if="o.company_id.email">
+                            <i class="fa fa-at"/>
+                            <span t-field="o.company_id.email"/>
+                        </li>
+                        <li t-if="o.company_id.website">
+                            <i class="fa fa-globe"/>
+                            <span t-field="o.company_id.website"/>
+                        </li>
+                    </ul>
+                    <div t-field="o.company_id.report_footer"/>
+                    <div class="text-muted">
+                        Page:
+                        <span class="page"/>
+                        of
+                        <span class="topage"/>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <template id="report_consignment_template">
+            <t t-call="spreadt_consignment_order.report_consignment_doc_header">
+                <t t-set="o" t-value="o.with_context({'lang':o.partner_id.lang})"/>
+                <!--<t t-foreach="docs" t-as="o">-->
+                    <!--<t t-call="web.external_layout">-->
+                        <div class="page" style="font-size: 10pt;">
+                            <div class="row">
+                                <div class="col-12" style="margin-top:0px;">
+                                    <div class="col-4 pull-left">
+                                        <span><b><h4>DELIVERY
+                                            NOTE</h4></b></span>
+                                    </div>
+                                    <div class="col-8 pull-right">
+                                        <table class="table table-sm">
+                                            <thead>
+                                                <tr>
+                                                    <td
+                                                            style="border: 1px solid black;"><b>Due Date</b></td>
+                                                    <td
+                                                            style="border: 1px solid black;"><b>Date</b></td>
+                                                    <td
+                                                            style="border: 1px solid black;"><b>Delivery Note No</b></td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td style="border: 1px solid black;">
+                                                        <span
+                                                            t-field="o.scheduled_date" t-field-options='{"widget": "date"}'/></td>
+                                                    <td style="border: 1px solid black;"><span
+                                                            t-field="o.scheduled_date" t-field-options='{"widget": "date"}'/>
+                                                    </td>
+                                                    <td style="border: 1px solid black;"><span
+                                                            t-field="o.name"/>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="col-6 pull-left">
+                                        <div t-if="o.partner_id.id">
+                                            <span><strong><center>Bill
+                                                To</center></strong></span>
+                                        <div t-field="o.partner_id"
+                                            t-options='{"widget": "contact", "fields": ["address", "name", "phone", "mobile"], "no_marker": True, "phone_icons": True}'/>
+                                        </div>
+                                    </div>
+                                    <div class="col-6 pull-right">
+                                        <div t-if="o.partner_id.id">
+                                            <span><strong><center>Ship
+                                                To</center></strong></span>
+                                        <div t-field="o.partner_id"
+                                            t-options='{"widget": "contact", "fields": ["address", "name", "phone", "mobile"], "no_marker": True, "phone_icons": True}'/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clearfix"/>
+                            <table class="table table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="2"
+                                            class="bottom-align-text" style="border: 1px solid black;"><span
+                                                  t-esc="o.location_dest_id.display_name"
+                                            ></span></td>
+                                        <td class="text-center" style="border: 1px solid black;"><strong>Request No</strong></td>
+                                        <td class="text-center" style="border: 1px solid black;"><strong>P.O. No</strong></td>
+                                        <td class="text-center" style="border: 1px solid black;"><strong>
+                                            Terms</strong></td>
+                                        <td class="text-center" style="border: 1px solid black;"
+                                        ><strong>Ship Track No</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td width="30%"
+                                            class="text-center" style="border: 1px solid black;">
+
+                                        </td>
+                                        <td style="height:25px;border: 1px solid black;border-left: 1px solid black;border-top: 1px solid black;">
+                                            <span t-field="o.origin"/>
+                                        </td>
+                                        <td style="border: 1px solid black;"></td>
+                                        <td style="border: 1px solid black;">
+                                            <span t-field="o.carrier_tracking_ref"/>
+                                        </td>
+                                        <!--<td></td>-->
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-sm"
+                                   style="border-collapse: collapse; border: 1px solid black;  margin-top: 1px;">
+                                <thead>
+                                    <tr>
+                                        <th style="border: 1px solid black;"
+                                            class="text-center">Barcode</th>
+                                        <th style="border: 1px solid black;"
+                                            class="text-center">Item Code</th>
+                                        <th style="border: 1px solid black;"
+                                            class="text-center">Description</th>
+                                        <th style="border: 1px solid black;"
+                                            class="text-center">Cost</th>
+                                        <th style="border: 1px solid black;"
+                                            class="text-center">Units</th>
+                                        <th style="border: 1px solid black;"
+                                            class="text-center">Amount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-set="qty_total" t-value="0"/>
+                                    <t t-set="amt_total" t-value="0"/>
+                                    <t t-set="sub_total" t-value="0"/>
+                                    <tr t-foreach="o.move_lines.sorted(key=lambda m: m.product_id.id)" t-as="move">
+                                        <td
+                                                style="border: 1px solid black;"
+                                            class="text-center">
+                                            <span t-field="move.product_id.barcode"/><br/>
+                                        </td>
+                                        <td style="border: 1px solid black;"
+                                            class="text-center">
+                                            <span t-field="move.product_id.default_code"/><br/>
+                                        </td>
+                                        <td style="border: 1px solid black;"
+                                            class="text-center">
+                                            <span t-field="move.product_id.name"/><br/>
+                                        </td>
+                                        <td style="border: 1px solid black;"
+                                            class="text-center">
+                                            <span
+                                                    t-field="move.sale_price"/><br/>
+                                        </td>
+
+                                        <td style="border: 1px solid black;"
+                                            class="text-center">
+                                            <span t-if="move.product_qty" t-field="move.product_qty"/>
+                                            <span t-if="not move.product_qty" t-esc="move.product_uom._compute_quantity(move.quantity_done, move.product_id.uom_id, rounding_method='HALF-UP')"/>
+                                            <span t-field="move.product_id.uom_id" groups="product.group_uom"/>
+
+                                            <t t-set="qty_total"
+                                               t-value="qty_total + move.product_qty"/>
+                                            <t t-if="not move.product_qty"
+                                               t-set="qty_total"
+                                               t-value="qty_total + move.product_uom._compute_quantity(move.quantity_done, move.product_id.uom_id, rounding_method='HALF-UP')"/>
+                                        </td>
+                                        <td
+                                                style="border: 1px solid black;border-bottom: 1px solid black;"
+                                            class="text-center">
+                                            <t t-set="amt_total"
+                                               t-value="move.product_qty * move.sale_price"/>
+                                            <t t-if="not move.product_qty"
+                                               t-set="amt_total"
+                                               t-value="move.product_uom._compute_quantity(move.quantity_done, move.product_id.uom_id, rounding_method='HALF-UP') * move.sale_price"/>
+                                            <span t-esc="amt_total"/>
+                                            <t t-set="sub_total"
+                                               t-value="sub_total + amt_total"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <td
+                                                style="border: 1px solid black;border-top: 1px solid black;"
+                                            class="text-center"
+                                                colspan="3"><b>Total</b>
+                                        </td>
+                                        <td style="border: 1px solid black;"
+                                            class="text-center"></td>
+                                        <td class="text-center">
+                                            <span t-esc="qty_total"/>
+                                        </td>
+                                        <td style="border: 1px solid black;"
+                                            class="text-center">
+                                        </td>
+                                    </tr>
+                                </thead>
+
+                                <tr>
+                                    <td class="text-center" colspan="3"
+                                        style="border-bottom: 1px solid white;">
+                                    </td>
+                                    <td colspan="2" style="border: 1px solid black;"><strong>Sub
+                                        Total</strong></td>
+                                    <td style="border: 1px solid black;"><strong><span t-esc="sub_total"/>
+                                    </strong></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center" colspan="3"
+                                            style="border-bottom: 1px solid white;border-left: 1px solid;">
+                                        <center>
+                                            <strong>
+                                            <span class="text-center"
+                                                  t-esc="o.partner_id.name"/>
+                                            <div>
+                                            <span>Grand Total</span>
+                                            </div>
+                                            </strong>
+                                        </center>
+                                    </td>
+                                    <td style="border: 1px solid black;"
+                                        colspan="2"><strong>Gross
+                                        Total</strong></td>
+                                    <td style="border: 1px solid black;border-left: 1px solid;">
+                                        <strong><span t-esc="sub_total"/></strong>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </t>
+                 <!--</t>-->
+             <!--</t>-->
+        </template>
+
+        <template id="report_consignment_template_main">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="spreadt_consignment_order.report_consignment_template"
+                       t-lang="o.partner_id.lang"/>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

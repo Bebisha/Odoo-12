@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_stock_inventory_location">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <h2>Stock Inventory</h2>
+                        <div class="row mt32 mb32">
+                            <div class="col-sm-12">
+                                <span>Location :</span>
+                                <sapn t-field="o.location_id"/>
+                            </div>
+                        </div>
+                        <table class="table table-sm">
+                            <thead>
+                                <t t-set="total_amount" t-value="0.0"/>
+                                <tr style="font-size: 12px;">
+                                    <th>Category</th>
+                                    <th>Product</th>
+                                    <th>Location</th>
+                                    <th>UOM</th>
+                                    <th>QTY</th>
+                                    <th>Rate</th>
+                                    <th>Amount</th>
+                                </tr>
+                            </thead>
+                            <tbody style="font-size: 12px;">
+                                <t t-foreach="o.line_ids" t-as="l">
+                                    <tr>
+                                        <td>
+                                            <span t-field="l.product_id.categ_id.display_name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="l.product_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-field="l.location_id.display_name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="l.product_uom_id.name"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="l.qty"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="l.standard_price"/>
+                                        </td>
+                                        <td>
+                                            <span t-esc="l.amount"/>
+                                            <t t-set="total_amount"
+                                               t-value="total_amount + l.amount"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </tbody>
+                            <tr>
+                                <td colspan="7" class="text-right"
+                                    style="padding-right:75px;font-size: 14px;" >
+                                  Total Amount : <span t-esc="total_amount"/>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="oe_structure"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

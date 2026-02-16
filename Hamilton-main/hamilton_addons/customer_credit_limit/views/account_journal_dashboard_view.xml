@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="account_journal_dashboard_kanban_view_credit_review"
+                model="ir.ui.view">
+            <field name="name">account.journal.dashboard.kanban.credit.review
+            </field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id"
+                   ref="account.account_journal_dashboard_kanban_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//t[@t-name='JournalBodySalePurchase']//div[hasclass('o_kanban_primary_right')]"
+                       position="inside">
+                    <div t-if="journal_type == 'sale'"
+                         groups='customer_credit_limit.group_credit_limit'>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <a type="object" name="open_so"
+                                   context="{'search_default_credit_review': '1'}">
+                                    <span t-if="journal_type == 'sale'"
+                                          title="SO under Credit Review">
+                                        <t t-esc="dashboard.number_credit_review"/>
+                                        SO under Credit Review
+                                    </span>
+                                </a>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <span>
+                                    <t t-esc="dashboard.so_total_amt"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- lot.months form -->
+    <record id="lot_months_form_view" model="ir.ui.view">
+        <field name="name">lot.months.form.view</field>
+        <field name="model">lot.months</field>
+        <field name="arch" type="xml">
+            <form string="Lot Months Code">
+                <sheet>
+                    <group col="4" colspan="4">
+                        <field name="code" required="1"/>
+                        <field name="month" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- lot month tree -->
+    <record id="lot_months_tree_view" model="ir.ui.view">
+        <field name="name">lot.months.tree.view</field>
+        <field name="model">lot.months</field>
+        <field name="arch" type="xml">
+            <tree string="Lot Months Code">
+                <field name="code"/>
+                <field name="month"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- lot month action -->
+    <record id="lot_months_action_view" model="ir.actions.act_window">
+        <field name="name">Lot Months</field>
+        <field name="res_model">lot.months</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="lot_months_tree_view"/>
+    </record>
+
+
+    <menuitem
+        id="menu_lot_codes"
+        name="Lot Code"
+        parent="purchase.menu_purchase_config"
+        groups="purchase.group_purchase_manager"/>
+
+    <menuitem
+        id="menu_lot_months"
+        name="Code for Months"
+        action="lot_months_action_view"
+        parent="menu_lot_codes"
+        groups="purchase.group_purchase_manager"/>
+
+</odoo>

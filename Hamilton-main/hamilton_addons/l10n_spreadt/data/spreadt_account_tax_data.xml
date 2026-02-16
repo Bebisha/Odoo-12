@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="tax_group_spreadt" model="account.tax.group">
+            <field name="name">VAT 5%</field>
+        </record>
+
+        <record model="account.tax.template" id="sale_vat_5_spreadt">
+            <field name="name">VAT 5%</field>
+            <field name="description">VAT 5%</field>
+            <field name="amount" eval="5"/>
+            <field name="amount_type">percent</field>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+            <field name="type_tax_use">sale</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="tax_group_id" ref="tax_group_spreadt"/>
+        </record>
+
+        <record model="account.tax.template" id="purchase_vat_5_spreadt">
+            <field name="name">VAT 5%</field>
+            <field name="description">VAT 5%</field>
+            <field name="amount" eval="5"/>
+            <field name="amount_type">percent</field>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+            <field name="type_tax_use">purchase</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="tax_group_id" ref="tax_group_spreadt"/>
+        </record>
+
+        <record id="tax_group_spreadt_vat0" model="account.tax.group">
+            <field name="name">VAT 0%</field>
+        </record>
+
+        <record model="account.tax.template" id="sale_vat_0_spreadt">
+            <field name="name">VAT 0%</field>
+            <field name="description">VAT 0%</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">percent</field>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+            <field name="type_tax_use">sale</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="tax_group_id" ref="tax_group_spreadt_vat0"/>
+        </record>
+
+        <record model="account.tax.template" id="purchase_vat_0_spreadt">
+            <field name="name">VAT 0%</field>
+            <field name="description">VAT 0%</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">percent</field>
+            <field name="chart_template_id" ref="configurable_chart_template_spreadt"/>
+            <field name="type_tax_use">purchase</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="tax_group_id" ref="tax_group_spreadt_vat0"/>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <template id="report_vat_fta">
+        <t t-call="web.basic_layout">
+            <style type="text/css">
+                .order_color {
+                background-color: #D3D3D3 !important;
+                }
+            </style>
+            <div class="page">
+                <t t-foreach="docs" t-as="s">
+                    <h3 style="text-align:center">
+                        <b>VAT 201-VAT Returns</b>
+                    </h3>
+                    <div class="col-12 ">
+                        <p class="order_color" style='border: 1px solid black;'>
+                            <b>Taxable Person Details</b>
+                        </p>
+                    </div>
+                    <div class="col-6" style="font-size:12px;">
+                        <div>
+                            TRN
+                        </div>
+                        <div class="order_color" style="border:1px solid black;">
+                            <t t-if="s.company_id.vat">
+                                <span t-field="s.company_id.vat" />
+                            </t>
+                            <t t-if="not s.company_id.vat">
+                                <span />
+                                <br />
+                            </t>
+
+                        </div>
+                        <br />
+                        <div>
+                            Taxable Person Name(English)
+                        </div>
+                        <div class="order_color" style="border:1px solid black;">
+                            <t t-if="s.company_id.name">
+                                <span t-field="s.company_id.name" />
+                            </t>
+                            <t t-if="not s.company_id.name">
+                                <span />
+                                <br />
+                            </t>
+                        </div>
+                        <br />
+                        <div>
+                            Taxable Person Address
+                        </div>
+                        <div class="order_color" style="border:1px solid black;">
+                            <t t-if="s.company_id.street">
+                                <span t-field="s.company_id.street" />
+                            </t>
+                            <t t-if="not s.company_id.street">
+                                <span />
+                            </t>
+                            <br />
+                            <t t-if="s.company_id.street2">
+                                <span t-field="s.company_id.street2" />
+                            </t>
+                            <t t-if="not s.company_id.street2">
+                                <span />
+                            </t>
+                            <br />
+                            <t t-if="s.company_id.state_id.name">
+                                <span t-field="s.company_id.state_id.name" />
+                            </t>
+                            <t t-if="not s.company_id.state_id.name">
+                                <span />
+                            </t>
+                            <br />
+                            <t t-if="s.company_id.country_id.name">
+                                <span t-field="s.company_id.country_id.name" />
+                            </t>
+                            <t t-if="not s.company_id.country_id.name">
+                                <span />
+                            </t>
+                            <br />
+                        </div>
+                        <br />
+
+                        <div class="col-6"></div>
+                    </div>
+                    <div class="col-12">
+                        <div class="order_color" style="border:1px solid black;">
+                            <b>Vat Return Period</b>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="row col-12">
+                        <div class="col-6" style="font-size:12px;">
+                            <div>
+                                Vat Return Period
+                            </div>
+                            <div class="order_color" style="border:1px solid black;">
+                                <span t-field="s.start_date"/>
+                                -
+                                <span t-field="s.end_date"/>
+                            </div>
+                            <br />
+                            <div>
+                                Tax Year End
+                            </div>
+                            <div style="border:1px solid black;">
+                                <span />
+                                <br />
+                            </div>
+                        </div>
+                        <div class="col-6" style="font-size:12px;">
+                            <div>
+                                Vat Return Due Date
+                            </div>
+                            <div style="border:1px solid black;">
+                                <span />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <t t-set="tax_datas" t-value="get_tax_values()"/>
+                    <t t-set="sale_amount_total" t-value="0"/>
+                    <div class="col-12">
+                        <div class="order_color" style="border: 1px solid black;">
+                            <b>Vat on Sales and all other Outputs</b>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="row" style="font-size:12px;">
+                        <div class="col-4"></div>
+                        <div class="col-2">
+                            <strong>Amount(AED)</strong>
+                        </div>
+                        <div class="col-3" style="text-align:center">
+                            <b>VAT Amount(AED)</b>
+                        </div>
+                        <div class="col-3" style="text-align:center">
+                            <b>Adjustment(AED)</b>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-4" style="font-size:12px;">
+                            1a Standard rated supplies in Abu Dhabi
+                        </div>
+                        <div class="col-2">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('abu_dhabi')[0]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                            <span t-esc="tax_datas.get('abu_dhabi')[1]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('abu_dhabi')[2]"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-4" style="font-size:12px;">
+                            1b Standard rated supplies in Dubai
+                        </div>
+                        <div class="col-2">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('dubai')[0]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                 <span t-esc="tax_datas.get('dubai')[1]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('dubai')[2]"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row" style="font-size:12px;">
+                        <div class="col-4">
+                            1c Standard rated supplies in Sharjah
+                        </div>
+                        <div class="col-2">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('sharjah')[0]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('sharjah')[1]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('sharjah')[2]"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row" style="font-size:12px;">
+                        <div class="col-4">
+                            1d Standard rated supplies in Ajman
+                        </div>
+                        <div class="col-2">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('ajman')[0]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('ajman')[1]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('ajman')[2]"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row" style="font-size:12px;">
+                        <div class="col-4">
+                            1e Standard rated supplies in Umm Al Quwain
+                        </div>
+                        <div class="col-2">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('umm_al_quwain')[0]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('umm_al_quwain')[1]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('umm_al_quwain')[2]"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-size:12px;">
+                        <br />
+                        <div class="col-4">
+                            1f Standard rated supplies in Ras Al Khaimah
+                        </div>
+                        <div class="col-2">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('ras_al_khaimah')[0]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('ras_al_khaimah')[1]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('ras_al_khaimah')[2]"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row" style="font-size:12px;">
+                        <br />
+                        <div class="col-4">
+                            1g Standard rated supplies in Fujairah
+                        </div>
+                        <div class="col-2">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('fujairah')[0]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('fujairah')[1]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('fujairah')[2]"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row" style="font-size:12px;">
+                        <br />
+                        <div class="col-4">
+                            2 Tax Refunds provided to Tourists under the Tax Refunds
+                        </div>
+                        <div class="col-2">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('tax_refunds')[0]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('tax_refunds')[1]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="font-size:12px;">
+                        <br />
+                        <div class="col-4">
+                            3 Supplies subject to the reverse charge provisions
+                        </div>
+                        <div class="col-2">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('supply_reverse_charge')[0]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('supply_reverse_charge')[1]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row" style="font-size:12px;">
+                        <br />
+                        <div class="col-4">
+                            4 Zero rated supplies
+                        </div>
+                        <div class="col-2">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('zero_rated')[0]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div>
+                                <br />
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row" style="font-size:12px;">
+                        <br />
+                        <div class="col-4">
+                            5 Exempt Supplies
+                        </div>
+                        <div class="col-2">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('exempt_supplies')[0]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div>
+                                <br />
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row" style="font-size:12px;">
+                        <br />
+                        <div class="col-4">
+                            6 Goods imported into the UAE
+                        </div>
+                        <div class="col-2">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('uae_goods')[0]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('uae_goods')[1]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row" style="font-size:12px;">
+                        <br />
+                        <div class="col-4">
+                            7 Adjustments to goods imported into the UAE
+                        </div>
+                        <div class="col-2">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('uae_adjust_goods')[0]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('uae_adjust_goods')[1]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <br /><br />
+                    <div class="row" style="font-size:12px;">
+                        <div class="col-4">
+                            8 Totals
+                        </div>
+                        <div class="col-2">
+                            <div class="order_color" style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('supply_total')[0]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="order_color" style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('supply_total')[1]"/>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div style="border:1px solid black;text-align:center">
+                                <span t-esc="tax_datas.get('supply_total')[2]"/>
+                            </div>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="col-12">
+                        <div class="order_color"
+                             style="border:1px solid black;">
+                            <b>Vat on Expenses and All Other Inputs</b>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-4" style="font-size:12px;">
+                                <br /><br /><br />
+                                <div>9 Standard rated expenses</div>
+                                <br />
+                                <div>10 Supplies subject to the reverse charge provisions</div>
+                                <br />
+                                <div>11 Totals</div>
+                                <br />
+                            </div>
+                            <div class="col-2" style="font-size:12px;">
+                                <div style="text-align:center">
+                                    <strong>Amount(AED)</strong>
+                                </div>
+                                <br /><br/>
+                                <div style="border:1px solid black;text-align:center">
+                                    <span t-esc="tax_datas.get('standard_rated_expense')[0]"/>
+                                </div>
+                                <br />
+                                <div style="border:1px solid black;text-align:center">
+                                    <span t-esc="tax_datas.get('expense_reverse_charge')[0]"/>
+                                </div>
+                                <br /><br/>
+                                <div class="order_color" style="border:1px solid black;text-align:center">
+                                    <span t-esc="tax_datas.get('expense_total')[0]"/>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="col-3" style="font-size:12px;">
+                                <div style="text-align:center">
+                                    <strong>Recoverable VAT Amount(AED)</strong>
+                                </div>
+                                <br />
+                                <div style="border:1px solid black;text-align:center">
+                                    <span t-esc="tax_datas.get('standard_rated_expense')[1]"/>
+                                </div>
+                                <br />
+                                <div style="border:1px solid black;text-align:center">
+                                    <span t-esc="tax_datas.get('expense_reverse_charge')[1]"/>
+                                </div>
+                                <br /><br/>
+                                <div class="order_color" style="border:1px solid black;text-align:center">
+                                    <span t-esc="tax_datas.get('expense_total')[1]"/>
+                                </div>
+                                <br />
+                            </div>
+                            <div class="col-3" style="font-size:12px;">
+                                <div style="text-align:center">
+                                    <strong>Adjustment(AED)</strong>
+                                </div>
+                                <br />
+                                <br />
+                                <div style="border:1px solid black;text-align:center">
+                                    <span t-esc="tax_datas.get('standard_rated_expense')[2]"/>
+                                </div>
+                                <br/><br/>
+                                <br/><br/>
+                                <div style="border:1px solid black;text-align:center">
+                                    <span t-esc="tax_datas.get('expense_total')[2]"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row col-12">
+                        <div class="col-12">
+                            <div class="order_color" style="border:1px solid black;">
+                                <b>Net VAT Due</b>
+                            </div><br />
+                            <div class="row col-12" style="font-size:12px;">
+                                <div class="col-12">
+                                    <div>12 Total value of due tax for the period</div>
+                                    <div class="col-6 order_color"
+                                         style="border:1px solid black;text-align:right;">
+                                        <span t-esc="tax_datas.get('total_tax')[0]"/>
+                                    </div>
+                                    <br/>
+                                </div>
+                            </div>
+                            <div class="row col-12" style="font-size:12px;">
+                                <div class="col-12">
+                                    <div>13 Total value of recoverable tax for the period</div>
+                                    <div class="col-6 order_color" style="border:1px solid black;text-align:right;">
+                                        <span t-esc="tax_datas.get('total_tax')[1]"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row col-12" style="font-size:12px;">
+                                <div class="col-12">
+                                    <div>14 Payable tax for the period</div>
+                                    <div class="col-6 order_color" style="border:1px solid black;text-align:right;">
+                                        <t t-if="tax_datas.get('total_tax')[2] > 0">
+                                            <span t-esc="tax_datas.get('total_tax')[2]"/>
+                                        </t>
+                                        <t t-if="not tax_datas.get('total_tax')[2] > 0">
+                                            (-)<span t-esc="abs(tax_datas.get('total_tax')[2])"/>
+                                        </t>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row col-12" style="font-size:12px;">
+                                <div>15 Do you apply the profit margin scheme in respect of any
+                                    supplies made during the tax period?
+                                </div>
+                            </div>
+                            <div class="row">
+                                <br/><br/>
+                                <div class="col-6">
+                                    <img class="img" style="width:25px;height:25px"
+                                        src="/ssf_vat_fta_reports/static/src/img/square.jpg" />
+                                    <strong>Yes</strong>
+                                </div>
+                                <div class="col-6">
+                                    <img class="img" style="width:20px;height:20px"
+                                        src="/ssf_vat_fta_reports/static/src/img/checked.jpg" />
+                                    <strong>No</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-12">
+                        <div class="order_color" style="border: 1px solid black;">
+                            <b>Additional Reporting Requirements</b>
+                        </div>
+                        <br />
+                        <div class="col-12">
+                            <div class="order_color" style="border: 1px solid black;">
+                                <b>Profit Margin Scheme</b>
+                            </div>
+                            <br />
+                        </div>
+                        <div class="col-12" style="font-size:12px;">
+                            <div>Did you apply the profit margin scheme in respect of any
+                                supplies made during the tax period?
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-6">
+                                <img class="img" style="width:25px;height:25px"
+                                    src="/ssf_vat_fta_reports/static/src/img/square.jpg" />
+                                <strong>Yes</strong>
+                            </div>
+                            <div class="col-6">
+                                <img class="img" style="width:20px;height:20px"
+                                    src="/ssf_vat_fta_reports/static/src/img/checked.jpg" />
+                                <strong>No</strong>
+                            </div>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="col-12">
+                        <div class="order_color" style="border: 1px solid black;">
+                            <b>Declaration and Authorized Signatory</b>
+                        </div>
+                        <br />
+                    </div>
+                    <div class="row col-12" style="font-size:12px;">
+                        <div class="col-6">
+                            <div>
+                                Name in English
+                            </div>
+                            <div style="border:1px solid black;">
+                                <t t-if="s.name">
+                                    <span t-field="s.name" />
+                                </t>
+                                <t t-if="not s.name">
+                                    <span />
+                                    <br />
+                                </t>
+                            </div>
+                            <br />
+                            <div class="col-6">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-12" style="font-size:12px;">
+                        <div class="col-6">
+                            <div>Phone/Mobile Country Code</div>
+                            <div style="border:1px solid black;">
+                                <t t-if="s.ph_country_code">
+                                    <span t-field="s.ph_country_code" />
+                                </t>
+                                <t t-if="not s.ph_country_code">
+                                    <span />
+                                    <br />
+                                </t>
+
+                            </div>
+                            <br />
+                        </div>
+                        <div class="col-6">
+                            <div>
+                                Phone/Mobile Number
+                            </div>
+                            <div style="border:1px solid black;">
+                                <t t-if="s.ph_number">
+                                    <span t-field="s.ph_number" />
+                                </t>
+                                <t t-if="not s.ph_number">
+                                    <span />
+                                </t>
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-12" style="font-size:12px;">
+                        <div class="col-6">
+                            <div>Date of Submission(dd/mm/yyyy)</div>
+                            <div class="order_color" style="border:1px solid black">
+                                <span t-esc="time.strftime('%d/%m/%Y')" />
+                            </div>
+                            <br />
+                        </div>
+                        <div class="col-6">
+                            <div>E-mail address</div>
+                            <div class="order_color" style="border:1px solid black;">
+                                <t t-if="s.company_id.email">
+                                    <span t-field="s.company_id.email" />
+                                </t>
+                                <t t-if="not s.company_id.email">
+                                    <span />
+                                    <br />
+                                </t>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                        <img class="img" style="width:20px;height:20px"
+                            src="/ssf_vat_fta_reports/static/src/img/checked.jpg" />
+                        I declare the all information provided is true,
+                        accurate and complete to the best of my knowledge and belief.
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_purchaseorder_document_enhance"
+              inherit_id="purchase.report_purchaseorder_document">
+
+        <xpath expr="//table[1]/thead/tr/th[1]" position="before">
+            <th>Product Code</th>
+        </xpath>
+        <xpath expr="//table[1]/tbody/tr/td[1]" position="before">
+            <td><span t-field="line.product_id.default_code"/></td>
+        </xpath>
+        <!--to hide taxes and date req.-->
+        <xpath expr="//table[1]/thead/tr/th[3]" position="replace">
+        </xpath>
+        <xpath expr="//table[1]/tbody/tr/td[3]" position="replace">
+        </xpath>
+        <xpath expr="//table[1]/thead/tr/th[3]" position="replace">
+        </xpath>
+        <xpath expr="//table[1]/tbody/tr/td[3]" position="replace">
+        </xpath>
+
+    </template>
+
+    <record id="paperformat_spreadt" model="report.paperformat">
+            <field name="name">Spreadt A4</field>
+            <field name="default" eval="True" />
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">42</field>
+            <field name="margin_bottom">28</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False" />
+            <field name="header_spacing">39</field>
+            <field name="dpi">90</field>
+    </record>
+
+</odoo>

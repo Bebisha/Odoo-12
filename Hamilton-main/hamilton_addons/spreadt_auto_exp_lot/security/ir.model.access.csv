@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_lot_months_user,lot.months.user,model_lot_months,purchase.group_purchase_user,1,1,1,1
+access_lot_year_user,lot.year.user,model_lot_year,purchase.group_purchase_user,1,1,1,1
+access_lot_months_stock_user,lot.months.stock.user,model_lot_months,stock.group_production_lot,1,0,0,0
+access_lot_year_stock_user,lot.stock.year.user,model_lot_year,stock.group_production_lot,1,0,0,0
